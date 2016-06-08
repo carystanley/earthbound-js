@@ -1,10 +1,11 @@
 
-function Character(game, x, y, physics) {
+function Character(game, x, y, skin, physics) {
+	var offest = skin * 8;
     Phaser.Sprite.call(this, game, x, y, 'actors');
-    this.animations.add('up', [1,2], 5, true);
-    this.animations.add('right', [13,14], 10, true);
-    this.animations.add('down', [25,26], 5, true);
-    this.animations.add('left', [37,38], 10, true);
+    this.animations.add('up', [offest + 0, offest + 1], 5, true);
+    this.animations.add('right', [offest + 2, offest + 3], 10, true);
+    this.animations.add('down', [offest + 4, offest + 5], 5, true);
+    this.animations.add('left', [offest + 6, offest + 7], 10, true);
 
     if (physics) {
         game.physics.ninja.enableAABB(this);

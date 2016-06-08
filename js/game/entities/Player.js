@@ -1,7 +1,7 @@
 Character = require('./Character');
 
-function Player(game, map, x, y) {
-    Character.call(this, game, x, y, true);
+function Player(game, map, x, y, skin) {
+    Character.call(this, game, x, y, skin, true);
     this.map = map;
 
     this.body.drag = 0.80;

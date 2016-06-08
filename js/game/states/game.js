@@ -41,9 +41,9 @@ game.create = function () {
     map = new Map(game, this.mapConfig);
     this.characters = game.add.group();
     var playerStart = map.getLocation(this.startLocationId);
-    player = new Player(game.game, map, playerStart.x, playerStart.y);
-    follower = new Follower(game.game, player);
-    follower2 = new Follower(game.game, follower);
+    player = new Player(game.game, map, playerStart.x, playerStart.y, 0);
+    follower = new Follower(game.game, 1, player);
+    follower2 = new Follower(game.game, 2, follower);
     this.characters.add(player);
     this.characters.add(follower);
     this.characters.add(follower2);

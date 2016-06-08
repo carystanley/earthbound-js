@@ -1,7 +1,7 @@
 Character = require('./Character');
 
-function Follower(game, followCharacter) {
-    Character.call(this, game, followCharacter.x, followCharacter.y, false);
+function Follower(game, skin, followCharacter) {
+    Character.call(this, game, followCharacter.x, followCharacter.y, skin, false);
     this.initQueue(followCharacter, 16);
 }
 

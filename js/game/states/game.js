@@ -16,8 +16,15 @@ game.preload = function () {
     Object.keys(mapConfig.tilesets).forEach(function(id) {
         game.load.image(id, mapConfig.tilesets[id]);
     });
+
+    game.load.image('chat_dialog', 'images/chat_dialog.png');
+
+    game.load.bitmapFont('basic', 'fonts/basic.png', 'fonts/basic.xml');
+    game.load.bitmapFont('mrsaturn', 'fonts/mrsaturn.png', 'fonts/mrsaturn.xml');
+
     game.load.audio('background_boymeetsgirl', ['audio/background_boymeetsgirl.mp3']);
     game.load.audio('effect_door_open', ['audio/effect_door_open.wav']);
+
     game.load.spritesheet('actors', 'images/actors.png', 24, 32);
 }
 
@@ -48,6 +55,7 @@ game.create = function () {
     this.characters.add(follower);
     this.characters.add(follower2);
     this.setupMatte();
+    this.setupChatDialog();
 
     this.playerDisabled = false;
 };
@@ -84,6 +92,14 @@ game.setupMatte = function() {
 	matte.endFill();
 	this.matte = matte;
 	this.fadeIn();
+};
+
+game.setupChatDialog = function() {
+    this.chat_dialog = game.add.image(96, 8, 'chat_dialog');
+    this.chat_dialog.fixedToCamera = true;
+    var bitmapDialog = game.make.bitmapText(8, 8, 'basic', 'Hello World', 16, this.chat_dialog);
+    bitmapDialog.maxWidth = 144;
+    this.chat_dialog.addChild(bitmapDialog);
 };
 
 game.fadeTween = function (alpha, callback) {

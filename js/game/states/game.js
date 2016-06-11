@@ -2,6 +2,11 @@ var Follower = require('../entities/Follower');
 var Player = require('../entities/Player');
 var MapConfig = require('../map/MapConfig');
 var Map = require('../map/Map');
+var SubState = {
+    World: require('../substates/World'),
+    Transition: require('../substates/Transition'),
+    Dialog: require('../substates/Dialog'),
+};
 
 var game = {};
 
@@ -52,7 +57,7 @@ game.create = function () {
     this.characters.add(follower2);
     this.setupMatte();
     this.setupChatDialog();
-    this.switchSubState(WorldSubState);
+    this.switchSubState(SubState.World);
 };
 
 game.update = function () {
@@ -104,14 +109,14 @@ game.soundEffectPlay = function (id) {
 
 game.transport = function(mapId, locationId) {
 	var self = this;
-	this.switchSubState(TransitionSubState);
+	this.switchSubState(SubState.Transition);
 	this.soundEffectPlay('effect_door_open');
 	this.fadeOut(function() {
 		if (self.mapConfig.id === mapId) {
             var locationPos = self.currentMap.getLocation(locationId);
             self.player.reset(locationPos.x, locationPos.y);
             self.fadeIn(function() {
-		        self.switchSubState(WorldSubState);
+		        self.switchSubState(SubState.World);
 			});
         } else {
             self.backgroundMusic.stop();
@@ -131,51 +136,6 @@ game.switchSubState = function (newSubState) {
 };
 
 // Use //foregroundLayer.tint = 0x222299; to simulate nighttime
-
-/* ----------------------- Sub States -------------------------- */
-
-var WorldSubState = {
-    enter: function() {
-        this.playerDisabled = false;
-	},
-    update: function() {
-        this.characters.sort('y', Phaser.Group.SORT_ASCENDING);
-        if (!this.playerDisabled) {
-
-            var collisonTiles = this.currentMap.getCollisionMap();
-            var events = this.currentMap.getEvents();
-
-            for (var i = 0; i < collisonTiles.length; i++) {
-                this.player.body.aabb.collideAABBVsTile(collisonTiles[i].tile);
-            }
-            //var tiles = collisonTiles.map(function(t) { return t.tile; });
-            //game.physics.ninja.collide(player, tiles);
-            game.physics.ninja.overlap(this.player, events, function(player, event) {
-        		event.onTouch();
-        	});
-        }
-    },
-    exit: function() {
-	}
-};
-
-var TransitionSubState = {
-    enter: function() {
-		this.playerDisabled = true;
-	},
-    update: function() {},
-    exit: function() {}
-};
-
-var DialogSubState = {
-    enter: function() {
-	   this.playerDisabled = true;
-	},
-    update: function() {
-    },
-    exit: function() {
-	}
-};
 
 
 module.exports = game;

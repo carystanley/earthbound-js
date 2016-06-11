@@ -1,6 +1,7 @@
 var WorldSubState = {
     enter: function() {
         this.playerDisabled = false;
+        this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_TOPDOWN);
 	},
     update: function() {
         this.characters.sort('y', Phaser.Group.SORT_ASCENDING);

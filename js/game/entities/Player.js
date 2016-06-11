@@ -7,9 +7,6 @@ function Player(game, map, x, y, skin) {
     this.body.drag = 0.80;
     this.body.maxSpeed = 60;
     this.accel = 15;
-
-    this.cursors = game.input.keyboard.createCursorKeys();
-    game.camera.follow(this, Phaser.Camera.FOLLOW_TOPDOWN);
 }
 
 Player.prototype = Object.create(Character.prototype);
@@ -19,7 +16,7 @@ Player.prototype.update = function () {
     if (this.game.state.getCurrentState().playerDisabled) return;
 
 	var direction = null;
-	var cursors = this.cursors;
+	var cursors = this.game.state.getCurrentState().cursors;
 
     if (cursors.left.isDown)
     {

@@ -58,6 +58,8 @@ game.create = function () {
     this.setupMatte();
     this.setupChatDialog();
     this.switchSubState(SubState.World);
+
+    this.cursors = game.input.keyboard.createCursorKeys();
 };
 
 game.update = function () {
@@ -92,9 +94,10 @@ game.setupMatte = function() {
 game.setupChatDialog = function() {
     this.chat_dialog = game.add.image(96, 8, 'chat_dialog');
     this.chat_dialog.fixedToCamera = true;
-    var bitmapDialog = game.make.bitmapText(8, 8, 'basic', 'Hello World', 16, this.chat_dialog);
+    var bitmapDialog = game.make.bitmapText(8, 8, 'basic', 'Under Construction', 16, this.chat_dialog);
     bitmapDialog.maxWidth = 144;
     this.chat_dialog.addChild(bitmapDialog);
+    this.chat_dialog.visible = false;
 };
 
 /* ------- Actions ---------- */

@@ -5,6 +5,9 @@ var DialogSubState = {
 	   this.chatDialog.visible = true;
 	},
     update: function() {
+		if (this.spaceKey.isDown) {
+			this.switchSubState(this.SubState.World);
+		}
     },
     exit: function() {
 	    this.chatDialog.visible = false;

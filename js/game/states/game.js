@@ -10,6 +10,8 @@ var SubState = {
 
 var game = {};
 
+game.SubState = SubState;
+
 game.init = function(mapid, startLocation) {
     this.mapConfig = MapConfig[mapid];
     this.startLocationId = startLocation;
@@ -60,6 +62,8 @@ game.create = function () {
     this.switchSubState(SubState.World);
 
     this.cursors = game.input.keyboard.createCursorKeys();
+    this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+    this.game.input.keyboard.addKeyCapture([ Phaser.Keyboard.SPACEBAR ]);
 };
 
 game.update = function () {

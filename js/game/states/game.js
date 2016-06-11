@@ -28,12 +28,8 @@ game.preload = function () {
     game.load.spritesheet('actors', 'images/actors.png', 24, 32);
 }
 
-var map;
-var player;
 var follower;
 var follower2;
-
-var music;
 
 game.create = function () {
 	game.physics.startSystem(Phaser.Physics.NINJA);
@@ -45,13 +41,13 @@ game.create = function () {
     };
     this.backgroundMusic.play('', 0, 1, true);
 
-    map = new Map(game, this.mapConfig);
+    this.currentMap = new Map(game, this.mapConfig);
     this.characters = game.add.group();
-    var playerStart = map.getLocation(this.startLocationId);
-    player = new Player(game.game, map, playerStart.x, playerStart.y, 0);
-    follower = new Follower(game.game, 1, player);
+    var playerStart = this.currentMap.getLocation(this.startLocationId);
+    this.player = new Player(game.game, this.currentMap, playerStart.x, playerStart.y, 0);
+    follower = new Follower(game.game, 1, this.player);
     follower2 = new Follower(game.game, 2, follower);
-    this.characters.add(player);
+    this.characters.add(this.player);
     this.characters.add(follower);
     this.characters.add(follower2);
     this.setupMatte();
@@ -112,8 +108,8 @@ game.transport = function(mapId, locationId) {
 	this.soundEffectPlay('effect_door_open');
 	this.fadeOut(function() {
 		if (self.mapConfig.id === mapId) {
-            var locationPos = map.getLocation(locationId);
-            player.reset(locationPos.x, locationPos.y);
+            var locationPos = self.currentMap.getLocation(locationId);
+            self.player.reset(locationPos.x, locationPos.y);
             self.fadeIn(function() {
 		        self.switchSubState(WorldSubState);
 			});
@@ -146,15 +142,15 @@ var WorldSubState = {
         this.characters.sort('y', Phaser.Group.SORT_ASCENDING);
         if (!this.playerDisabled) {
 
-            var collisonTiles = map.getCollisionMap();
-            var events = map.getEvents();
+            var collisonTiles = this.currentMap.getCollisionMap();
+            var events = this.currentMap.getEvents();
 
             for (var i = 0; i < collisonTiles.length; i++) {
-                player.body.aabb.collideAABBVsTile(collisonTiles[i].tile);
+                this.player.body.aabb.collideAABBVsTile(collisonTiles[i].tile);
             }
             //var tiles = collisonTiles.map(function(t) { return t.tile; });
             //game.physics.ninja.collide(player, tiles);
-            game.physics.ninja.overlap(player, events, function(player, event) {
+            game.physics.ninja.overlap(this.player, events, function(player, event) {
         		event.onTouch();
         	});
         }

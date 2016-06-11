@@ -66,10 +66,17 @@ game.update = function () {
 	}
 }
 
-//game.render = function () {
-//    game.game.debug.body(events[0]);
-//    game.game.debug.body(player);
-//}
+game.switchSubState = function (newSubState) {
+    if (this.substate && this.substate.exit) {
+	    this.substate.exit.call(this);
+	}
+    this.substate = newSubState;
+    if (this.substate && this.substate.enter) {
+        this.substate.enter.call(this);
+	}
+};
+
+/* ------- Setup ---------- */
 
 game.setupMatte = function() {
     var matte = game.add.graphics(0, 0);
@@ -89,6 +96,8 @@ game.setupChatDialog = function() {
     bitmapDialog.maxWidth = 144;
     this.chat_dialog.addChild(bitmapDialog);
 };
+
+/* ------- Actions ---------- */
 
 game.fadeTween = function (alpha, callback) {
 	var game = this;
@@ -123,16 +132,6 @@ game.transport = function(mapId, locationId) {
             self.state.start('game', true, false, mapId, locationId);
 	    }
     });
-};
-
-game.switchSubState = function (newSubState) {
-    if (this.substate && this.substate.exit) {
-	    this.substate.exit.call(this);
-	}
-    this.substate = newSubState;
-    if (this.substate && this.substate.enter) {
-        this.substate.enter.call(this);
-	}
 };
 
 // Use //foregroundLayer.tint = 0x222299; to simulate nighttime

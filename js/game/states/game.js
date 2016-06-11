@@ -92,12 +92,12 @@ game.setupMatte = function() {
 };
 
 game.setupChatDialog = function() {
-    this.chat_dialog = game.add.image(96, 8, 'chat_dialog');
-    this.chat_dialog.fixedToCamera = true;
-    var bitmapDialog = game.make.bitmapText(8, 8, 'basic', 'Under Construction', 16, this.chat_dialog);
-    bitmapDialog.maxWidth = 144;
-    this.chat_dialog.addChild(bitmapDialog);
-    this.chat_dialog.visible = false;
+    this.chatDialog = game.add.image(96, 8, 'chat_dialog');
+    this.chatDialog.fixedToCamera = true;
+    this.chatDialogTxt = game.make.bitmapText(8, 8, 'basic', '', 16, this.chat_dialog);
+    this.chatDialogTxt.maxWidth = 144;
+    this.chatDialog.addChild(this.chatDialogTxt);
+    this.chatDialog.visible = false;
 };
 
 /* ------- Actions ---------- */
@@ -136,6 +136,11 @@ game.transport = function(mapId, locationId) {
 	    }
     });
 };
+
+game.showDialog = function (displayText) {
+	this.chatDialogTxt.setText(displayText);
+    this.switchSubState(SubState.Dialog);
+}
 
 // Use //foregroundLayer.tint = 0x222299; to simulate nighttime
 

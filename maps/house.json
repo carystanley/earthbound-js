@@ -72,9 +72,9 @@
                  "y":368
                 }, 
                 {
-                 "height":16,
+                 "height":18,
                  "id":13,
-                 "name":"hall_steps",
+                 "name":"sister_hall_door",
                  "properties":
                     {
                      "text":"Under Construction"
@@ -93,7 +93,7 @@
                 {
                  "height":16,
                  "id":14,
-                 "name":"sister_hall_door",
+                 "name":"hall_steps",
                  "properties":
                     {
                      "text":"Under Construction"

@@ -26,12 +26,12 @@
     <property name="map" value="house"/>
    </properties>
   </object>
-  <object id="13" name="hall_steps" type="dialog" x="128" y="336" width="16" height="16">
+  <object id="13" name="sister_hall_door" type="dialog" x="128" y="336" width="16" height="18">
    <properties>
     <property name="text" value="Under Construction"/>
    </properties>
   </object>
-  <object id="14" name="sister_hall_door" type="dialog" x="48" y="368" width="16" height="16">
+  <object id="14" name="hall_steps" type="dialog" x="48" y="368" width="16" height="16">
    <properties>
     <property name="text" value="Under Construction"/>
    </properties>

@@ -56,26 +56,13 @@ game.create = function () {
     this.characters.add(follower2);
     this.setupMatte();
     this.setupChatDialog();
-
-    this.playerDisabled = false;
+    this.switchSubState(WorldSubState);
 };
 
 game.update = function () {
-    this.characters.sort('y', Phaser.Group.SORT_ASCENDING);
-    if (!this.playerDisabled) {
-
-        var collisonTiles = map.getCollisionMap();
-        var events = map.getEvents();
-
-        for (var i = 0; i < collisonTiles.length; i++) {
-            player.body.aabb.collideAABBVsTile(collisonTiles[i].tile);
-        }
-        //var tiles = collisonTiles.map(function(t) { return t.tile; });
-        //game.physics.ninja.collide(player, tiles);
-        game.physics.ninja.overlap(player, events, function(player, event) {
-    		event.onTouch();
-    	});
-    }
+    if (this.substate && this.substate.update) {
+        this.substate.update.call(this);
+	}
 }
 
 //game.render = function () {
@@ -121,14 +108,14 @@ game.soundEffectPlay = function (id) {
 
 game.transport = function(mapId, locationId) {
 	var self = this;
-	this.playerDisabled = true;
+	this.switchSubState(TransitionSubState);
 	this.soundEffectPlay('effect_door_open');
 	this.fadeOut(function() {
 		if (self.mapConfig.id === mapId) {
             var locationPos = map.getLocation(locationId);
             player.reset(locationPos.x, locationPos.y);
             self.fadeIn(function() {
-		        self.playerDisabled = false;
+		        self.switchSubState(WorldSubState);
 			});
         } else {
             self.backgroundMusic.stop();
@@ -137,6 +124,62 @@ game.transport = function(mapId, locationId) {
     });
 };
 
+game.switchSubState = function (newSubState) {
+    if (this.substate && this.substate.exit) {
+	    this.substate.exit.call(this);
+	}
+    this.substate = newSubState;
+    if (this.substate && this.substate.enter) {
+        this.substate.enter.call(this);
+	}
+};
+
 // Use //foregroundLayer.tint = 0x222299; to simulate nighttime
+
+/* ----------------------- Sub States -------------------------- */
+
+var WorldSubState = {
+    enter: function() {
+        this.playerDisabled = false;
+	},
+    update: function() {
+        this.characters.sort('y', Phaser.Group.SORT_ASCENDING);
+        if (!this.playerDisabled) {
+
+            var collisonTiles = map.getCollisionMap();
+            var events = map.getEvents();
+
+            for (var i = 0; i < collisonTiles.length; i++) {
+                player.body.aabb.collideAABBVsTile(collisonTiles[i].tile);
+            }
+            //var tiles = collisonTiles.map(function(t) { return t.tile; });
+            //game.physics.ninja.collide(player, tiles);
+            game.physics.ninja.overlap(player, events, function(player, event) {
+        		event.onTouch();
+        	});
+        }
+    },
+    exit: function() {
+	}
+};
+
+var TransitionSubState = {
+    enter: function() {
+		this.playerDisabled = true;
+	},
+    update: function() {},
+    exit: function() {}
+};
+
+var DialogSubState = {
+    enter: function() {
+	   this.playerDisabled = true;
+	},
+    update: function() {
+    },
+    exit: function() {
+	}
+};
+
 
 module.exports = game;

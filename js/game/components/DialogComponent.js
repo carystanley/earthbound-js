@@ -9,7 +9,6 @@ DialogComponent = function(game) {
 };
 
 DialogComponent.prototype.setText = function(displayText) {
-	console.error(displayText);
     this.chatTxt.setText(displayText);
 };
 

@@ -8,6 +8,7 @@ var SubState = {
     Dialog: require('../substates/Dialog'),
 };
 var DialogComponent = require('../components/DialogComponent');
+var MatteComponent = require('../components/MatteComponent');
 
 var game = {};
 
@@ -58,13 +59,15 @@ game.create = function () {
     this.characters.add(this.player);
     this.characters.add(follower);
     this.characters.add(follower2);
-    this.setupMatte();
+    this.matte = new MatteComponent(game.game);
     this.chatDialog = new DialogComponent(game.game);
     this.switchSubState(SubState.World);
 
     this.cursors = game.input.keyboard.createCursorKeys();
     this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     this.game.input.keyboard.addKeyCapture([ Phaser.Keyboard.SPACEBAR ]);
+
+    this.matte.fadeIn();
 };
 
 game.update = function () {
@@ -83,33 +86,15 @@ game.switchSubState = function (newSubState) {
 	}
 };
 
-/* ------- Setup ---------- */
-
-game.setupMatte = function() {
-    var matte = game.add.graphics(0, 0);
-	matte.fixedToCamera = true;
-	matte.beginFill(0x000000, 1);
-	matte.drawRect(0, 0, game.game.width, game.game.height);
-	matte.alpha = 1;
-	matte.endFill();
-	this.matte = matte;
-	this.fadeIn();
-};
-
 /* ------- Actions ---------- */
 
-game.fadeTween = function (alpha, callback) {
-	var game = this;
-	var matte = this.matte;
-    callback = callback || function() {};
-
-	s = game.add.tween(matte);
-	s.to({ alpha: alpha }, 500, null);
-	s.onComplete.add(callback);
-	s.start();
+game.fadeIn = function (callback) {
+	this.matte.fadeIn(callback);
 };
-game.fadeIn = game.fadeTween.bind(game, 0);
-game.fadeOut = game.fadeTween.bind(game, 1);
+
+game.fadeOut = function (callback) {
+	this.matte.fadeOut(callback);
+};
 
 game.soundEffectPlay = function (id) {
     this.soundEffects[id].play();

@@ -7,6 +7,7 @@ var SubState = {
     Transition: require('../substates/Transition'),
     Dialog: require('../substates/Dialog'),
 };
+var DialogComponent = require('../components/DialogComponent');
 
 var game = {};
 
@@ -58,7 +59,7 @@ game.create = function () {
     this.characters.add(follower);
     this.characters.add(follower2);
     this.setupMatte();
-    this.setupChatDialog();
+    this.chatDialog = new DialogComponent(game.game);
     this.switchSubState(SubState.World);
 
     this.cursors = game.input.keyboard.createCursorKeys();
@@ -93,15 +94,6 @@ game.setupMatte = function() {
 	matte.endFill();
 	this.matte = matte;
 	this.fadeIn();
-};
-
-game.setupChatDialog = function() {
-    this.chatDialog = game.add.image(96, 8, 'chat_dialog');
-    this.chatDialog.fixedToCamera = true;
-    this.chatDialogTxt = game.make.bitmapText(8, 8, 'basic', '', 16, this.chat_dialog);
-    this.chatDialogTxt.maxWidth = 144;
-    this.chatDialog.addChild(this.chatDialogTxt);
-    this.chatDialog.visible = false;
 };
 
 /* ------- Actions ---------- */
@@ -142,7 +134,7 @@ game.transport = function(mapId, locationId) {
 };
 
 game.showDialog = function (displayText) {
-	this.chatDialogTxt.setText(displayText);
+	this.chatDialog.setText(displayText);
     this.switchSubState(SubState.Dialog);
 }
 

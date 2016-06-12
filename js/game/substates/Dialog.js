@@ -2,7 +2,7 @@
 var DialogSubState = {
     enter: function() {
 	   this.playerDisabled = true;
-	   this.chatDialog.visible = true;
+	   this.chatDialog.show();
 	},
     update: function() {
 		if (this.spaceKey.isDown) {
@@ -10,7 +10,7 @@ var DialogSubState = {
 		}
     },
     exit: function() {
-	    this.chatDialog.visible = false;
+	    this.chatDialog.hide();
 	}
 };
 

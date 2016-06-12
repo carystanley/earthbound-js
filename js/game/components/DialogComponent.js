@@ -6,10 +6,21 @@ DialogComponent = function(game) {
     this.chatTxt.maxWidth = 144;
     this.container.addChild(this.chatTxt);
     this.container.visible = false;
+    this.buffer = '';
+    this.displayText = '';
+    game.time.events.loop(25, this.update, this);
+};
+
+DialogComponent.prototype.update = function() {
+	if (this.buffer.length > 0) {
+	    this.displayText += this.buffer.substr(0, 1);
+	    this.buffer = this.buffer.substr(1);
+	    this.chatTxt.setText(this.displayText);
+	}
 };
 
 DialogComponent.prototype.setText = function(displayText) {
-    this.chatTxt.setText(displayText);
+	this.buffer = displayText;
 };
 
 DialogComponent.prototype.show = function() {
@@ -18,6 +29,13 @@ DialogComponent.prototype.show = function() {
 
 DialogComponent.prototype.hide = function() {
     this.container.visible = false;
+    this.clear();
+};
+
+DialogComponent.prototype.clear = function() {
+    this.buffer = '';
+    this.displayText = '';
+    this.chatTxt.setText(this.displayText);
 };
 
 module.exports = DialogComponent;

@@ -8,11 +8,15 @@
   },
   "author": "Cary Stanley",
   "browser": {
-    "Stats": "./js/lib/stats.min.js"
+    "Stats": "./js/lib/stats.min.js",
+    "slopes": "./js/lib/phaser-arcade-slopes.min.js"
   },
   "browserify-shim": {
     "Stats": {
       "exports": "Stats"
+    },
+    "slopes": {
+      "exports": "slopes"
     }
   },
   "dependencies": {

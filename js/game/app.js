@@ -6,6 +6,8 @@ var properties = require('./properties')
     }
   , game = new Phaser.Game(properties.size.x, properties.size.y, Phaser.AUTO, 'game', null, false, false);
 
+require('slopes');
+
 // Automatically register each state.
 Object.keys(states).forEach(function(key) {
     var state = states[key];

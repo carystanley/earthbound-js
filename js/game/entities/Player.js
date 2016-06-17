@@ -15,13 +15,15 @@ Player.prototype = Object.create(Character.prototype);
 Player.prototype.constructor = Player;
 
 Player.prototype.update = function () {
-    if (this.game.state.getCurrentState().playerDisabled) return;
+    this.body.velocity.x = 0;
+    this.body.velocity.y = 0;
+    if (this.game.state.getCurrentState().playerDisabled) {
+		this.animations.stop();
+	    return;
+    }
 
 	var direction = null;
 	var cursors = this.game.state.getCurrentState().cursors;
-
-    this.body.velocity.x = 0;
-    this.body.velocity.y = 0;
 
     if (cursors.left.isDown)
     {

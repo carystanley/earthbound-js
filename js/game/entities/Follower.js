@@ -32,7 +32,10 @@ Follower.prototype.updateQueue = function() {
 };
 
 Follower.prototype.update = function () {
-    if (this.game.state.getCurrentState().playerDisabled) return;
+    if (this.game.state.getCurrentState().playerDisabled) {
+		this.animations.stop();
+	    return;
+    }
 
     // Handle Following
     if (this.followCharacter.animations.currentAnim.isPlaying) {

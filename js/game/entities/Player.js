@@ -4,9 +4,11 @@ function Player(game, map, x, y, skin) {
     Character.call(this, game, x, y, skin, true);
     this.map = map;
 
-    this.body.drag = 0.80;
-    this.body.maxSpeed = 60;
-    this.accel = 15;
+    //this.body.drag.x = 640;
+    //this.body.drag.y = 640;
+    //this.body.maxVelocity.x = 80;
+    //this.body.maxVelocity.y = 80;
+    this.accel = 80;
 }
 
 Player.prototype = Object.create(Character.prototype);
@@ -18,25 +20,28 @@ Player.prototype.update = function () {
 	var direction = null;
 	var cursors = this.game.state.getCurrentState().cursors;
 
+    this.body.velocity.x = 0;
+    this.body.velocity.y = 0;
+
     if (cursors.left.isDown)
     {
-        this.body.moveLeft(this.accel);
+        this.body.velocity.x = -this.accel;
         direction = 'left';
     }
     else if (cursors.right.isDown)
     {
-        this.body.moveRight(this.accel);
+        this.body.velocity.x = this.accel;
         direction = 'right';
     }
 
     if (cursors.up.isDown)
     {
-        this.body.moveUp(this.accel);
+        this.body.velocity.y = -this.accel;
         direction = 'up';
     }
     else if (cursors.down.isDown)
     {
-        this.body.moveDown(this.accel);
+        this.body.velocity.y = this.accel;
         direction = 'down';
     }
 

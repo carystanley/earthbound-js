@@ -8,9 +8,10 @@ function Character(game, x, y, skin, physics) {
     this.animations.add('left', [offest + 6, offest + 7], 10, true);
 
     if (physics) {
-        game.physics.ninja.enableAABB(this);
-        this.body.aabb = new Phaser.Physics.Ninja.AABB(this.body, this.x, this.y, 16, 7);
-        this.body.shape = this.body.aabb;
+        game.physics.arcade.enable(this);
+        game.slopes.enable(this);
+        //this.body.aabb = new Phaser.Physics.Ninja.AABB(this.body, this.x, this.y, 16, 7);
+        //this.body.shape = this.body.aabb;
     }
 
     this.anchor.x = 0.5;

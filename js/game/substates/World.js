@@ -10,7 +10,7 @@ var WorldSubState = {
             var events = this.currentMap.getEvents();
 
             this.physics.arcade.collide(this.player, this.currentMap.backgroundLayer);
-            this.physics.arcade.overlap(this.player, events, function(player, event) {
+            this.physics.arcade.collide(this.player, events, function(player, event) {
         		event.onTouch();
         	});
         }

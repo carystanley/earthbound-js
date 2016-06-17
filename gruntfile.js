@@ -215,7 +215,7 @@ module.exports = function (grunt) {
     , 'browserify'
     , 'jade'
     , 'stylus'
-    , 'copy:phaserNinja'
+    , 'copy:phaserArcade'
     , 'connect'
     , 'open'
     , 'watch'
@@ -229,7 +229,7 @@ module.exports = function (grunt) {
     , 'jade'
     , 'stylus'
     , 'uglify'
-    , 'copy:phaserNinjaMin'
+    , 'copy:phaserArcadeMin'
    /* , 'cacheBust' */
     , 'connect'
     , 'open'

@@ -11,8 +11,8 @@ function Character(game, x, y, skin, physics) {
 
     if (physics) {
         game.physics.arcade.enable(this);
+        this.body.setSize(16, 7, 5, 27);
         game.slopes.enable(this);
-        this.body.setSize(16, 7, 5, 28);
         //this.body.aabb = new Phaser.Physics.Ninja.AABB(this.body, this.x, this.y, 16, 7);
         //this.body.shape = this.body.aabb;
     }

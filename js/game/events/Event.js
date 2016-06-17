@@ -7,7 +7,7 @@ function Event(game, settings) {
     this.renderable = false;
     this.width = settings.width || 16;
     this.height = settings.height || 16;
-    game.physics.ninja.enableAABB(this);
+    game.physics.arcade.enable(this);
     this.body.immovable = true;
 }
 

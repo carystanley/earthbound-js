@@ -41,8 +41,9 @@ var follower;
 var follower2;
 
 game.create = function () {
-	game.physics.startSystem(Phaser.Physics.NINJA);
-	game.physics.ninja.gravity = 0;
+	this.physics.startSystem(Phaser.Physics.ARCADE);
+	this.game.plugins.add(Phaser.Plugin.ArcadeSlopes);
+	game.physics.arcade.gravity.y = 0;
 
     this.backgroundMusic = game.add.audio('background_boymeetsgirl');
     this.soundEffects = {

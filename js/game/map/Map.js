@@ -22,22 +22,19 @@ function Map(game, config) {
 
     var slopeLookup = {
 	    291: 0,
-		158: 4,
-		159: 5,
+		158: 'HALF_TOP_RIGHT',
+		159: 'HALF_TOP_LEFT',
 		97: 0,
-		80: 4,
-		81: 5,
-		82: 5
+		80: 'HALF_TOP_RIGHT',
+		81: 'HALF_TOP_LEFT',
+		82: 'HALF_TOP_LEFT'
 	}
     var slopeMap = [];
     for (var i = 0; i < 291; i++) {
-        slopeMap.push(slopeLookup[i] !== undefined ? slopeLookup[i] : 1);
+        slopeMap.push(slopeLookup[i] !== undefined ? slopeLookup[i] : 'FULL');
 	}
-    this.collisonTiles = game.physics.ninja.convertTilemap(this.map, this.backgroundLayer, slopeMap);
-}
-
-Map.prototype.getCollisionMap = function () {
-	return this.collisonTiles;
+    this.game.game.slopes.convertTilemapLayer(this.backgroundLayer, slopeMap);
+    this.map.setCollisionBetween(0, 291, true, 'background');
 }
 
 Map.prototype.getEvents = function () {

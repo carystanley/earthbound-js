@@ -71,6 +71,12 @@ game.create = function () {
     this.matte.fadeIn();
 };
 
+/* Simple Debug
+game.render = function () {
+    game.game.debug.body(this.player);
+}
+*/
+
 game.update = function () {
     if (this.substate && this.substate.update) {
         this.substate.update.call(this);

@@ -21,20 +21,20 @@ function Map(game, config) {
     this.events = this.setupEvents(this.game, this.map);
 
     var slopeLookup = {
-	    291: 0,
+	    291: null,
 		158: 'HALF_TOP_RIGHT',
 		159: 'HALF_TOP_LEFT',
-		97: 0,
+		97: null,
 		80: 'HALF_TOP_RIGHT',
 		81: 'HALF_TOP_LEFT',
 		82: 'HALF_TOP_LEFT'
 	}
     var slopeMap = [];
-    for (var i = 0; i < 291; i++) {
-        slopeMap.push(slopeLookup[i] !== undefined ? slopeLookup[i] : 'FULL');
+    for (var i = 0; i <= 291; i++) {
+        slopeMap.push(slopeLookup[i] !== null ? slopeLookup[i] || 'FULL' : undefined);
 	}
     this.game.game.slopes.convertTilemapLayer(this.backgroundLayer, slopeMap);
-    this.map.setCollisionBetween(0, 291, true, 'background');
+    //this.map.setCollisionBetween(0, 291, true, 'background');
 }
 
 Map.prototype.getEvents = function () {

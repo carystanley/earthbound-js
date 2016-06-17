@@ -7,15 +7,15 @@ function Character(game, x, y, skin, physics) {
     this.animations.add('down', [offest + 4, offest + 5], 5, true);
     this.animations.add('left', [offest + 6, offest + 7], 10, true);
 
+    this.anchor.setTo(0.5, 1);
+
     if (physics) {
         game.physics.arcade.enable(this);
         game.slopes.enable(this);
+        this.body.setSize(16, 7, 5, 28);
         //this.body.aabb = new Phaser.Physics.Ninja.AABB(this.body, this.x, this.y, 16, 7);
         //this.body.shape = this.body.aabb;
     }
-
-    this.anchor.x = 0.5;
-    this.anchor.y = 1;
 }
 
 Character.prototype = Object.create(Phaser.Sprite.prototype);

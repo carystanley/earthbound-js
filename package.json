@@ -9,7 +9,8 @@
   "author": "Cary Stanley",
   "browser": {
     "Stats": "./js/lib/stats.min.js",
-    "slopes": "./js/lib/phaser-arcade-slopes.min.js"
+    "slopes": "./js/lib/phaser-arcade-slopes.min.js",
+    "ninepatch": "./js/lib/nine-patch-phaser-plugin.min.js"
   },
   "browserify-shim": {
     "Stats": {
@@ -17,6 +18,9 @@
     },
     "slopes": {
       "exports": "slopes"
+    },
+    "ninepatch": {
+      "exports": "ninepatch"
     }
   },
   "dependencies": {

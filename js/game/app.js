@@ -7,6 +7,7 @@ var properties = require('./properties')
   , game = new Phaser.Game(properties.size.x, properties.size.y, Phaser.AUTO, 'game', null, false, false);
 
 require('slopes');
+require('ninepatch');
 
 // Automatically register each state.
 Object.keys(states).forEach(function(key) {

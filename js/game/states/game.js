@@ -26,7 +26,7 @@ game.preload = function () {
         game.load.image(id, mapConfig.tilesets[id]);
     });
 
-    game.load.image('chat_dialog', 'images/chat_dialog.png');
+    game.load.image('dialog', 'images/dialog.png');
 
     game.load.bitmapFont('basic', 'fonts/basic.png', 'fonts/basic.xml');
     game.load.bitmapFont('mrsaturn', 'fonts/mrsaturn.png', 'fonts/mrsaturn.xml');

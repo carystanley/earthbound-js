@@ -1,6 +1,9 @@
 
 DialogComponent = function(game) {
-    this.container = game.add.image(96, 8, 'chat_dialog');
+	game.cache.addNinePatch('dialogpatch', 'dialog', null, 8, 8, 16, 16);
+    this.container = new Phaser.NinePatchImage(game, 96, 8, 'dialogpatch');
+    this.container.targetWidth = 152;
+    this.container.targetHeight = 64
     this.container.fixedToCamera = true;
     this.chatTxt = game.make.bitmapText(8, 8, 'basic', '', 16, this.container);
     this.chatTxt.maxWidth = 144;

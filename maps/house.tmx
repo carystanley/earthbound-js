@@ -28,7 +28,7 @@
   </object>
   <object id="13" name="sister_hall_door" type="dialog" x="128" y="336" width="16" height="18">
    <properties>
-    <property name="text" value="Under Construction"/>
+    <property name="text" value="Maybe this could be the door to your sister's room, or maybe it could actually be a portal to another dimension, or maybe I'm  just rambling on to show that the text buffer handles a whole lot of lines"/>
    </properties>
   </object>
   <object id="14" name="hall_steps" type="dialog" x="48" y="368" width="16" height="16">

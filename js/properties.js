@@ -1,4 +1,4 @@
-var npmProperties = require('../../package.json');
+var npmProperties = require('../package.json');
 
 module.exports =
   { title: 'Earthbound.js'

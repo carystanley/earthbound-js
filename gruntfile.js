@@ -1,4 +1,4 @@
-var properties = require('./js/game/properties.js');
+var properties = require('./js/properties.js');
 
 module.exports = function (grunt) {
 
@@ -25,7 +25,7 @@ module.exports = function (grunt) {
 
     , project:
       { src: 'js'
-      , js: '<%= project.src %>/game/{,*/}*.js'
+      , js: '<%= project.src %>/{,*/}*.js'
       , dest: 'js'
       , bundle: 'build/js/app.min.js'
       , port: properties.port
@@ -82,7 +82,7 @@ module.exports = function (grunt) {
 
     , browserify:
       { app:
-        { src: ['<%= project.src %>/game/app.js']
+        { src: ['<%= project.src %>/app.js']
         , dest: '<%= project.bundle %>'
         , options:
           { transform: ['browserify-shim']

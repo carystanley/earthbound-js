@@ -24,22 +24,6 @@ game.preload = function () {
 	Loader.loadResource(game.game, 'default');
 	Loader.loadResource(game.game, this.mapId);
 
-	/*
-	var mapConfig = this.mapConfig;
-    game.load.tilemap(mapConfig.id, mapConfig.tilemap, null, Phaser.Tilemap.TILED_JSON);
-    Object.keys(mapConfig.tilesets).forEach(function(id) {
-        game.load.image(id, mapConfig.tilesets[id]);
-    });
-
-    game.load.image('dialog', 'images/dialog.png');
-
-    game.load.bitmapFont('basic', 'fonts/basic.png', 'fonts/basic.xml');
-    game.load.bitmapFont('mrsaturn', 'fonts/mrsaturn.png', 'fonts/mrsaturn.xml');
-
-    game.load.audio('background_boymeetsgirl', ['audio/background_boymeetsgirl.mp3']);
-    game.load.audio('effect_door_open', ['audio/effect_door_open.wav']);
-    */
-
     game.load.spritesheet('actors', 'images/actors.png', 24, 32);
 }
 
@@ -47,17 +31,20 @@ var follower;
 var follower2;
 
 game.create = function () {
+	this.mapConfig = Config.getResource(this.mapId);
+
 	this.physics.startSystem(Phaser.Physics.ARCADE);
 	this.game.plugins.add(Phaser.Plugin.ArcadeSlopes);
 	game.physics.arcade.gravity.y = 0;
 
-    this.backgroundMusic = game.add.audio('bgm_boymeetsgirl');
+    if (this.mapConfig.bgm) {
+        this.backgroundMusic = game.add.audio(this.mapConfig.bgm);
+        this.backgroundMusic.play('', 0, 1, true);
+    }
     this.soundEffects = {
         sfx_door_open: game.add.audio('sfx_door_open')
     };
-    this.backgroundMusic.play('', 0, 1, true);
-
-    this.currentMap = new Map(game, Config.getResource(this.mapId));
+    this.currentMap = new Map(game, this.mapConfig);
     this.characters = game.add.group();
     var playerStart = this.currentMap.getLocation(this.startLocationId);
     this.player = new Player(game.game, this.currentMap, playerStart.x, playerStart.y, 0);

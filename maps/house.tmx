@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="30" tilewidth="16" tileheight="16" nextobjectid="19">
- <tileset firstgid="1" name="house_tileset" tilewidth="16" tileheight="16" tilecount="384" columns="24">
+ <tileset firstgid="1" name="tiles_house" tilewidth="16" tileheight="16" tilecount="384" columns="24">
   <image source="../images/house_tileset.png" width="384" height="256"/>
  </tileset>
  <layer name="background" width="20" height="30">
@@ -17,13 +17,13 @@
   <object id="1" name="bedroom_door" type="transport" x="64" y="112" width="16" height="16">
    <properties>
     <property name="location" value="hall_from_bedroom"/>
-    <property name="map" value="house"/>
+    <property name="map" value="map_house"/>
    </properties>
   </object>
   <object id="10" name="ness_hall_door" type="transport" x="256" y="368" width="16" height="16">
    <properties>
     <property name="location" value="bedroom_from_hall"/>
-    <property name="map" value="house"/>
+    <property name="map" value="map_house"/>
    </properties>
   </object>
   <object id="13" name="sister_hall_door" type="dialog" x="128" y="336" width="16" height="18">

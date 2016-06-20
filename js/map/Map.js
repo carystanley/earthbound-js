@@ -5,9 +5,9 @@ var EventTypes = {
 
 function Map(game, config) {
 	this.game = game;
-	this.config = config;
+	this.id = config.id;
     this.map = game.add.tilemap(config.id);
-    Object.keys(config.tilesets).forEach(function(tileset) {
+    config.tileset.forEach(function(tileset) {
 		this.map.addTilesetImage(tileset, tileset);
 	}, this);
 
@@ -62,10 +62,6 @@ Map.prototype.setupLocations = function (map) {
 
 Map.prototype.getLocation = function(id) {
     return this.locations[id];
-}
-
-Map.prototype.getConfig = function() {
-    return this.config;
 }
 
 module.exports = Map;

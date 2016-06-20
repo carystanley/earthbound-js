@@ -5,7 +5,7 @@ preloader.preload = function () {
 };
 
 preloader.create = function () {
-  this.game.state.start('game', true, false, 'house', 'start');
+  this.game.state.start('game', true, false, 'map_house', 'start');
 };
 
 module.exports = preloader;

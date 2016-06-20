@@ -1,6 +1,7 @@
+var Config = require('../utils/Config')
+var Loader = require('../utils/Loader');
 var Follower = require('../entities/Follower');
 var Player = require('../entities/Player');
-var MapConfig = require('../map/MapConfig');
 var Map = require('../map/Map');
 var SubState = {
     World: require('../substates/World'),
@@ -15,11 +16,15 @@ var game = {};
 game.SubState = SubState;
 
 game.init = function(mapid, startLocation) {
-    this.mapConfig = MapConfig[mapid];
+    this.mapId = mapid;
     this.startLocationId = startLocation;
 }
 
 game.preload = function () {
+	Loader.loadResource(game.game, 'default');
+	Loader.loadResource(game.game, this.mapId);
+
+	/*
 	var mapConfig = this.mapConfig;
     game.load.tilemap(mapConfig.id, mapConfig.tilemap, null, Phaser.Tilemap.TILED_JSON);
     Object.keys(mapConfig.tilesets).forEach(function(id) {
@@ -33,6 +38,7 @@ game.preload = function () {
 
     game.load.audio('background_boymeetsgirl', ['audio/background_boymeetsgirl.mp3']);
     game.load.audio('effect_door_open', ['audio/effect_door_open.wav']);
+    */
 
     game.load.spritesheet('actors', 'images/actors.png', 24, 32);
 }
@@ -45,13 +51,13 @@ game.create = function () {
 	this.game.plugins.add(Phaser.Plugin.ArcadeSlopes);
 	game.physics.arcade.gravity.y = 0;
 
-    this.backgroundMusic = game.add.audio('background_boymeetsgirl');
+    this.backgroundMusic = game.add.audio('bgm_boymeetsgirl');
     this.soundEffects = {
-        effect_door_open: game.add.audio('effect_door_open')
+        sfx_door_open: game.add.audio('sfx_door_open')
     };
     this.backgroundMusic.play('', 0, 1, true);
 
-    this.currentMap = new Map(game, this.mapConfig);
+    this.currentMap = new Map(game, Config.getResource(this.mapId));
     this.characters = game.add.group();
     var playerStart = this.currentMap.getLocation(this.startLocationId);
     this.player = new Player(game.game, this.currentMap, playerStart.x, playerStart.y, 0);
@@ -110,9 +116,9 @@ game.soundEffectPlay = function (id) {
 game.transport = function(mapId, locationId) {
 	var self = this;
 	this.switchSubState(SubState.Transition);
-	this.soundEffectPlay('effect_door_open');
+	this.soundEffectPlay('sfx_door_open');
 	this.fadeOut(function() {
-		if (self.mapConfig.id === mapId) {
+		if (self.mapId === mapId) {
             var locationPos = self.currentMap.getLocation(locationId);
             self.player.reset(locationPos.x, locationPos.y);
             self.fadeIn(function() {

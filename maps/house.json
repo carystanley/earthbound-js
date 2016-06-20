@@ -36,7 +36,7 @@
                  "properties":
                     {
                      "location":"hall_from_bedroom",
-                     "map":"house"
+                     "map":"map_house"
                     },
                  "propertytypes":
                     {
@@ -57,7 +57,7 @@
                  "properties":
                     {
                      "location":"bedroom_from_hall",
-                     "map":"house"
+                     "map":"map_house"
                     },
                  "propertytypes":
                     {
@@ -173,7 +173,7 @@
          "imageheight":256,
          "imagewidth":384,
          "margin":0,
-         "name":"house_tileset",
+         "name":"tiles_house",
          "spacing":0,
          "tilecount":384,
          "tileheight":16,

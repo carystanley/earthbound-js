@@ -6,6 +6,11 @@ var properties = require('./properties')
     }
   , game = new Phaser.Game(properties.size.x, properties.size.y, Phaser.AUTO, 'game', null, false, false);
 
+var Config = require('./utils/Config');
+Config.load({
+    resources: require('../config/resources.json')
+});
+
 require('slopes');
 require('ninepatch');
 

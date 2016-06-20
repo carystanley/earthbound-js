@@ -1,14 +1,14 @@
 
 DialogComponent = function(game) {
-	game.cache.addNinePatch('dialogpatch', 'dialog', null, 8, 8, 16, 16);
-    this.container = new Phaser.NinePatchImage(game, 96, 8, 'dialogpatch');
+	game.cache.addNinePatch('ninepatch_dialog', 'image_dialog', null, 8, 8, 16, 16);
+    this.container = new Phaser.NinePatchImage(game, 96, 8, 'ninepatch_dialog');
     this.container.targetWidth = 152;
     this.container.targetHeight = 64
     this.container.fixedToCamera = true;
     this.chatTxt = [];
     this.lineCount = 3;
     for (var i = 0; i < this.lineCount; i++) {
-        var chatLine = game.make.bitmapText(8, 8 + (i * 16), 'basic', '', 16, this.container);
+        var chatLine = game.make.bitmapText(8, 8 + (i * 16), 'font_basic', '', 16, this.container);
         chatLine.maxWidth = 128;
         this.container.addChild(chatLine);
         this.chatTxt.push(chatLine);

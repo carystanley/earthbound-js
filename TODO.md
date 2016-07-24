@@ -5,8 +5,8 @@
 - [ ] Inventory
 - [ ] Add Enemy Config
 - [ ] Overworld Enemy Entity
-- [ ] Overworld Chase AI
-- [ ] Overworld Wander AI
+    - [ ] Overworld Chase AI
+    - [ ] Overworld Wander AI
 - [ ] Battle System
     - [ ] Attack Order
     - [ ] Actions

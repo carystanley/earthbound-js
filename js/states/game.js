@@ -7,6 +7,7 @@ var SubState = {
     World: require('../substates/World'),
     Transition: require('../substates/Transition'),
     Dialog: require('../substates/Dialog'),
+    Battle: require('../substates/Battle')
 };
 var DialogComponent = require('../components/DialogComponent');
 var MatteComponent = require('../components/MatteComponent');

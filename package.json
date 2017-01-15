@@ -39,6 +39,6 @@
     "grunt-contrib-uglify": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-open": "^0.2.3",
-    "phaser": "^2.4.6"
+    "phaser": "2.4.8"
   }
 }

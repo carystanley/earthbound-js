@@ -66,7 +66,8 @@ game.create = function () {
 
     this.cursors = game.input.keyboard.createCursorKeys();
     this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-    this.game.input.keyboard.addKeyCapture([ Phaser.Keyboard.SPACEBAR ]);
+    this.actionKey = game.input.keyboard.addKey(Phaser.Keyboard.X);
+    this.game.input.keyboard.addKeyCapture([ Phaser.Keyboard.SPACEBAR, Phaser.Keyboard.X ]);
 
     this.matte.fadeIn();
 };

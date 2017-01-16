@@ -9,7 +9,7 @@ BattleSubState.prototype.transitionIn = function(callback) {
 
 BattleSubState.prototype.update = function() {
     var state = this.parent;
-    if (state.spaceKey.isDown) {
+    if (state.actionKey.isDown) {
         state.switchSubState('world');
   	}
 };

@@ -55,7 +55,6 @@ MenuComponent.prototype.show = function() {
 
 MenuComponent.prototype.hide = function() {
     this.container.visible = false;
-    this.clear();
 };
 
 module.exports = MenuComponent;

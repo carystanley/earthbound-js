@@ -6,10 +6,19 @@ WorldSubState.prototype.enter = function() {
     var state = this.parent;
     state.playerDisabled = false;
     state.game.camera.follow(state.player, Phaser.Camera.FOLLOW_TOPDOWN);
+    this.actionCoolOff = 10;
 };
 
 WorldSubState.prototype.update = function() {
     var state = this.parent;
+
+    if (this.actionCoolOff > 0) {
+        this.actionCoolOff--;
+    } else {
+        if (state.actionKey.isDown) {
+            state.switchSubState('menu');
+  	    }
+    }
 
     state.characters.sort('y', Phaser.Group.SORT_ASCENDING);
     if (!state.playerDisabled) {

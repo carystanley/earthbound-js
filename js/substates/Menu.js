@@ -4,7 +4,6 @@ var MenuSubState = function(state) {
 
 MenuSubState.prototype.enter = function() {
     var state = this.parent;
-		state.playerDisabled = true;
     state.menuDialog.show();
     this.setCoolOff();
 };
@@ -13,13 +12,13 @@ MenuSubState.prototype.update = function() {
     var state = this.parent;
 
     if (this.coolOff <= 0) {
-        var cursors = state.cursors;
-        var direction = null;
 
-        if (cursors.up.isDown) {
+        if (state.actionKey.isDown) {
+            state.switchSubState('world');
+    	  } else if (state.cursors.up.isDown) {
           state.menuDialog.selectionUp()
           this.setCoolOff();
-        } else if (cursors.down.isDown) {
+        } else if (state.cursors.down.isDown) {
           state.menuDialog.selectionDown()
           this.setCoolOff();
         }

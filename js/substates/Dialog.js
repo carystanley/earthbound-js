@@ -10,7 +10,7 @@ DialogSubState.prototype.enter = function() {
 DialogSubState.prototype.update = function() {
     var state = this.parent;
 
-		if (state.spaceKey.isDown) {
+		if (state.actionKey.isDown) {
 		  	state.switchSubState('world');
 		}
 };

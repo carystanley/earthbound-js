@@ -4,7 +4,9 @@ var MenuSubState = function(state) {
 
 MenuSubState.prototype.enter = function() {
     var state = this.parent;
-    state.menuDialog.show();
+    this.menu = state[this.menuId];
+    this.menu.setOptions(this.getOptions());
+    this.menu.show();
     this.setCoolOff();
 };
 
@@ -13,13 +15,13 @@ MenuSubState.prototype.update = function() {
 
     if (this.coolOff <= 0) {
 
-        if (state.actionKey.isDown) {
-            state.switchSubState('world');
+        if (state.cancelKey.isDown) {
+          this.onCancel && this.onCancel();
     	  } else if (state.cursors.up.isDown) {
-          state.menuDialog.selectionUp()
+          this.menu.selectionUp()
           this.setCoolOff();
         } else if (state.cursors.down.isDown) {
-          state.menuDialog.selectionDown()
+          this.menu.selectionDown()
           this.setCoolOff();
         }
     } else {
@@ -29,11 +31,6 @@ MenuSubState.prototype.update = function() {
 
 MenuSubState.prototype.setCoolOff = function() {
     this.coolOff = 10;
-};
-
-MenuSubState.prototype.exit = function() {
-    var state = this.parent;
-    state.menuDialog.hide();
 };
 
 module.exports = MenuSubState;

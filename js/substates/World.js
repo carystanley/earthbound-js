@@ -6,7 +6,7 @@ WorldSubState.prototype.enter = function() {
     var state = this.parent;
     state.playerDisabled = false;
     state.game.camera.follow(state.player, Phaser.Camera.FOLLOW_TOPDOWN);
-    this.actionCoolOff = 10;
+    this.actionCoolOff = 20;
 };
 
 WorldSubState.prototype.update = function() {
@@ -16,7 +16,7 @@ WorldSubState.prototype.update = function() {
         this.actionCoolOff--;
     } else {
         if (state.actionKey.isDown) {
-            state.switchSubState('menu');
+            state.switchSubState('worldmenu');
   	    }
     }
 

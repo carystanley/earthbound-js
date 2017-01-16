@@ -9,7 +9,7 @@ var substates = {
     transition: require('../substates/Transition'),
     dialog: require('../substates/Dialog'),
     battle: require('../substates/Battle'),
-    menu: require('../substates/Menu')
+    worldmenu: require('../substates/WorldMenu')
 };
 var DialogComponent = require('../components/DialogComponent');
 var MenuComponent = require('../components/MenuComponent');
@@ -65,8 +65,8 @@ game.create = function () {
     this.switchSubState('world');
 
     this.cursors = game.input.keyboard.createCursorKeys();
-    this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-    this.actionKey = game.input.keyboard.addKey(Phaser.Keyboard.X);
+    this.actionKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+    this.cancelKey = game.input.keyboard.addKey(Phaser.Keyboard.X);
     this.game.input.keyboard.addKeyCapture([ Phaser.Keyboard.SPACEBAR, Phaser.Keyboard.X ]);
 
     this.matte.fadeIn();

@@ -1,24 +1,27 @@
 
-var isBlack = false;
+var BattleSubState = function(state) {
+    this.parent = state;
+    this.isBlack = false;
+}
 
-var BattleSubState = {
-    enter: function() {
-		    this.playerDisabled = true;
-        isBlack = false;
-      	this.fadeOut(function() {
-      	  	isBlack = true;
+BattleSubState.prototype.enter = function() {
+    var self = this;
+    var state = this.parent;
+
+		state.playerDisabled = true;
+    this.isBlack = false;
+    state.encounterMatte.show(function() {
+        self.isBlack = true;
+    });
+};
+
+BattleSubState.prototype.update = function() {
+    var state = this.parent;
+    if (this.isBlack && state.spaceKey.isDown) {
+        state.encounterMatte.hide(function() {
+            state.switchSubState('world');
         });
-	  },
-    update: function() {
-        var self = this;
-        if (isBlack && this.spaceKey.isDown) {
-            self.fadeIn(function() {
-                self.switchSubState(self.SubState.World);
-            });
-  		  }
-    },
-    exit: function() {
-    }
+  	}
 };
 
 module.exports = BattleSubState;

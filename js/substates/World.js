@@ -1,22 +1,25 @@
-var WorldSubState = {
-    enter: function() {
-        this.playerDisabled = false;
-        this.game.camera.follow(this.player, Phaser.Camera.FOLLOW_TOPDOWN);
-	},
-    update: function() {
-        this.characters.sort('y', Phaser.Group.SORT_ASCENDING);
-        if (!this.playerDisabled) {
+var WorldSubState = function(parent) {
+    this.parent = parent;
+}
 
-            var events = this.currentMap.getEvents();
+WorldSubState.prototype.enter = function() {
+    var state = this.parent;
+    state.playerDisabled = false;
+    state.game.camera.follow(state.player, Phaser.Camera.FOLLOW_TOPDOWN);
+};
 
-            this.physics.arcade.collide(this.player, this.currentMap.backgroundLayer);
-            this.physics.arcade.collide(this.player, events, function(player, event) {
-        		event.onTouch();
-        	});
-        }
-    },
-    exit: function() {
-	}
+WorldSubState.prototype.update = function() {
+    var state = this.parent;
+
+    state.characters.sort('y', Phaser.Group.SORT_ASCENDING);
+    if (!state.playerDisabled) {
+        var events = state.currentMap.getEvents();
+
+        state.physics.arcade.collide(state.player, state.currentMap.backgroundLayer);
+        state.physics.arcade.collide(state.player, events, function(player, event) {
+            event.onTouch();
+        });
+    }
 };
 
 module.exports = WorldSubState;

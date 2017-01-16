@@ -1,20 +1,24 @@
 var Config = require('../utils/Config')
 var Loader = require('../utils/Loader');
+var SubState = require('../utils/SubState');
 var Follower = require('../entities/Follower');
 var Player = require('../entities/Player');
 var Map = require('../map/Map');
-var SubState = {
-    World: require('../substates/World'),
-    Transition: require('../substates/Transition'),
-    Dialog: require('../substates/Dialog'),
-    Battle: require('../substates/Battle')
+var substates = {
+    world: require('../substates/World'),
+    transition: require('../substates/Transition'),
+    dialog: require('../substates/Dialog'),
+    battle: require('../substates/Battle'),
+    menu: require('../substates/Menu')
 };
 var DialogComponent = require('../components/DialogComponent');
+var MenuComponent = require('../components/MenuComponent');
 var MatteComponent = require('../components/MatteComponent');
+var EncounterMatteComponent = require('../components/EncounterMatteComponent');
 
 var game = {};
 
-game.SubState = SubState;
+game.substate = new SubState(game, substates);
 
 game.init = function(mapid, startLocation) {
     this.mapId = mapid;
@@ -55,8 +59,10 @@ game.create = function () {
     this.characters.add(follower);
     this.characters.add(follower2);
     this.matte = new MatteComponent(game.game);
+    this.encounterMatte = new EncounterMatteComponent(game.game);
     this.chatDialog = new DialogComponent(game.game);
-    this.switchSubState(SubState.World);
+    this.menuDialog = new MenuComponent(game.game);
+    this.switchSubState('world');
 
     this.cursors = game.input.keyboard.createCursorKeys();
     this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -72,19 +78,11 @@ game.render = function () {
 */
 
 game.update = function () {
-    if (this.substate && this.substate.update) {
-        this.substate.update.call(this);
-	}
+    this.substate.update();
 }
 
-game.switchSubState = function (newSubState) {
-    if (this.substate && this.substate.exit) {
-	    this.substate.exit.call(this);
-	}
-    this.substate = newSubState;
-    if (this.substate && this.substate.enter) {
-        this.substate.enter.call(this);
-	}
+game.switchSubState = function (id) {
+    this.substate.switch(id);
 };
 
 /* ------- Actions ---------- */
@@ -103,14 +101,14 @@ game.soundEffectPlay = function (id) {
 
 game.transport = function(mapId, locationId) {
 	var self = this;
-	this.switchSubState(SubState.Transition);
+	this.switchSubState('transition');
 	this.soundEffectPlay('sfx_door_open');
 	this.fadeOut(function() {
 		if (self.mapId === mapId) {
             var locationPos = self.currentMap.getLocation(locationId);
             self.player.reset(locationPos.x, locationPos.y);
             self.fadeIn(function() {
-		        self.switchSubState(SubState.World);
+		        self.switchSubState('world');
 			});
         } else {
             self.backgroundMusic.stop();
@@ -121,7 +119,12 @@ game.transport = function(mapId, locationId) {
 
 game.showDialog = function (displayText) {
 	this.chatDialog.setText(displayText);
-    this.switchSubState(SubState.Dialog);
+    this.switchSubState('dialog');
+}
+
+game.mapTint = function (tint) {
+    this.currentMap.foregroundLayer.tint = tint;
+    this.currentMap.backgroundLayer.tint = tint;
 }
 
 // Use //foregroundLayer.tint = 0x222299; to simulate nighttime

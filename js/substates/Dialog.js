@@ -1,17 +1,25 @@
 
-var DialogSubState = {
-    enter: function() {
-	   this.playerDisabled = true;
-	   this.chatDialog.show();
-	},
-    update: function() {
-		if (this.spaceKey.isDown) {
-			this.switchSubState(this.SubState.World);
+var DialogSubState = function(state) {
+    this.parent = state;
+}
+
+DialogSubState.prototype.enter = function() {
+    var state = this.parent;
+
+	  state.playerDisabled = true;
+	  state.chatDialog.show();
+};
+
+DialogSubState.prototype.update = function() {
+    var state = this.parent;
+
+		if (state.spaceKey.isDown) {
+		  	state.switchSubState('world');
 		}
-    },
-    exit: function() {
-	    this.chatDialog.hide();
-	}
+};
+
+DialogSubState.prototype.exit = function() {
+	  this.parent.chatDialog.hide();
 };
 
 module.exports = DialogSubState;

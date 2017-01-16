@@ -15,7 +15,7 @@ WorldSubState.prototype.update = function() {
     if (this.actionCoolOff > 0) {
         this.actionCoolOff--;
     } else {
-        if (state.actionKey.isDown) {
+        if (state.cancelKey.isDown) {
             state.switchSubState('worldmenu');
   	    }
     }

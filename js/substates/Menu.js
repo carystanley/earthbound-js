@@ -4,7 +4,7 @@ var MenuSubState = function(state) {
 
 MenuSubState.prototype.enter = function() {
     var state = this.parent;
-    this.menu = state[this.menuId];
+    this.menu = state.menus[this.menuId];
     this.menu.setOptions(this.getOptions());
     this.menu.show();
     this.setCoolOff();
@@ -17,6 +17,8 @@ MenuSubState.prototype.update = function() {
 
         if (state.cancelKey.isDown) {
           this.onCancel && this.onCancel();
+        } else if (state.actionKey.isDown) {
+          this.onSelect && this.onSelect(this.menu.getSelectedId());
     	  } else if (state.cursors.up.isDown) {
           this.menu.selectionUp()
           this.setCoolOff();

@@ -1,18 +1,18 @@
 
-MenuComponent = function(game) {
+MenuComponent = function(game, options) {
 	game.cache.addNinePatch('ninepatch_dialog', 'image_dialog', null, 8, 8, 16, 16);
-    this.container = new Phaser.NinePatchImage(game, 96, 96, 'ninepatch_dialog');
-    this.container.targetWidth = 152;
-    this.container.targetHeight = 64
+    this.container = new Phaser.NinePatchImage(game, options.x, options.y, 'ninepatch_dialog');
+    this.container.targetWidth = options.width;
+    this.container.targetHeight = options.height
     this.container.fixedToCamera = true;
 
     this.menuItems = [];
-    this.menuItemCount = 3;
+    this.menuItemCount = options.rows;
     this.options = [];
     this.selection = 0;
     for (var i = 0; i < this.menuItemCount; i++) {
         var menuItem = game.make.bitmapText(8, 8 + (i * 16), 'font_basic', '', 16, this.container);
-        menuItem.maxWidth = 128;
+        menuItem.maxWidth = options.width - 24;
         this.container.addChild(menuItem);
         this.menuItems.push(menuItem);
     }
@@ -29,7 +29,8 @@ MenuComponent.prototype.setOptions = function(options) {
 MenuComponent.prototype.reset = function() {
     var options = this.options;
     for (var i = 0; i < this.menuItemCount; i++) {
-        this.menuItems[i].setText((this.selection === i ? '@ ' : '') + (options[i] || 'Empty'));
+			  var option = options[i];
+        this.menuItems[i].setText((this.selection === i ? '@ ' : '') + ((option && option.text) || ''));
     }
 };
 
@@ -47,6 +48,12 @@ MenuComponent.prototype.selectionDown = function() {
     this.selection = this.menuItemCount - 1;
   }
   this.reset();
+};
+
+MenuComponent.prototype.getSelectedId = function() {
+  return this.options &&
+	    this.options[this.selection] &&
+			this.options[this.selection].id;
 };
 
 MenuComponent.prototype.show = function() {

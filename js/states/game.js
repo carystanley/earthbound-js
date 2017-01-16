@@ -9,7 +9,8 @@ var substates = {
     transition: require('../substates/Transition'),
     dialog: require('../substates/Dialog'),
     battle: require('../substates/Battle'),
-    worldmenu: require('../substates/WorldMenu')
+    worldmenu: require('../substates/WorldMenu'),
+    worldgoodsmenu: require('../substates/WorldGoodsMenu')
 };
 var DialogComponent = require('../components/DialogComponent');
 var MenuComponent = require('../components/MenuComponent');
@@ -61,7 +62,10 @@ game.create = function () {
     this.matte = new MatteComponent(game.game);
     this.encounterMatte = new EncounterMatteComponent(game.game);
     this.chatDialog = new DialogComponent(game.game);
-    this.menuDialog = new MenuComponent(game.game);
+    this.menus = {
+         world: new MenuComponent(game.game, {x: 8, y: 8, width: 64, height: 64, rows: 3}),
+         worldgoods: new MenuComponent(game.game, {x: 32, y: 32, width: 152, height: 64, rows: 3})
+    }
     this.switchSubState('world');
 
     this.cursors = game.input.keyboard.createCursorKeys();

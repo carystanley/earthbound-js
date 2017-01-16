@@ -4,7 +4,7 @@ var TransitionSubState = function(state) {
 };
 
 TransitionSubState.prototype.enter = function() {
-    this.parent.playerDisabled = true;
+
 }
 
 module.exports = TransitionSubState;

@@ -22,4 +22,8 @@ WorldSubState.prototype.update = function() {
     }
 };
 
+WorldSubState.prototype.exit = function() {
+    this.parent.playerDisabled = true;
+}
+
 module.exports = WorldSubState;

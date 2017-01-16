@@ -4,10 +4,7 @@ var DialogSubState = function(state) {
 }
 
 DialogSubState.prototype.enter = function() {
-    var state = this.parent;
-
-	  state.playerDisabled = true;
-	  state.chatDialog.show();
+	  this.parent.chatDialog.show();
 };
 
 DialogSubState.prototype.update = function() {

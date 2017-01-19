@@ -1,0 +1,21 @@
+{
+  "mushroom": {
+    "stats": {
+      "hp": 10,
+      "def": 5,
+      "off": 3,
+      "guts": 10,
+      "luck": 30,
+      "miss": 20
+    },
+    "xp": 6,
+    "money": 6,
+    "level": 2,
+    "music": "silly",
+    "strategy": "random",
+    "actions": ["bash", "heal", "bash", "mushroom"],
+    "drop": "fungi",
+    "dropfreq": 2,
+    "status": "normal"
+  }
+}

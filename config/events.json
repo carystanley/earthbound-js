@@ -1,0 +1,11 @@
+{
+  "someevent": {
+    "pages": [{
+      "trigger": "action",
+      "type": "fixed",
+      "sprite": "somespriteid",
+      "conditions": {},
+      "commands": []
+    }]
+  }
+}

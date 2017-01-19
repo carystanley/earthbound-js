@@ -1,0 +1,16 @@
+{
+  "crackedbat": {
+    "type": "weapon",
+    "cost": 18,
+    "stats": {
+      "off": 4
+    }
+  },
+  "ramen": {
+    "type": "food",
+    "cost": 12,
+    "stats": {
+      "hp": 30
+    }
+  }
+}

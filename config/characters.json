@@ -1,0 +1,21 @@
+{
+  "hero": {
+    "stats": {
+      "off": 1,
+      "def": 1,
+      "spd": 1,
+      "guts": 1,
+      "vit", 1,
+      "iq": 20,
+      "luck": 1
+    },
+    "equip": {
+      "weapon": null,
+      "arm": null,
+      "body": null,
+      "other": null
+    },
+    "sprite": "hero",
+    "level": 1,
+  }
+}

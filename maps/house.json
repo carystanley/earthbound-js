@@ -108,6 +108,28 @@
                  "width":16,
                  "x":48,
                  "y":368
+                }, 
+                {
+                 "height":16,
+                 "id":20,
+                 "name":"tree_battle2",
+                 "rotation":0,
+                 "type":"battle",
+                 "visible":true,
+                 "width":16,
+                 "x":192,
+                 "y":352
+                }, 
+                {
+                 "height":16,
+                 "id":21,
+                 "name":"tree_battle1",
+                 "rotation":0,
+                 "type":"battle",
+                 "visible":true,
+                 "width":16,
+                 "x":224,
+                 "y":352
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -161,7 +183,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":19,
+ "nextobjectid":22,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":16,

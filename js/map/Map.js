@@ -1,6 +1,7 @@
 var EventTypes = {
     transport: require('../events/TransportEvent'),
-    dialog: require('../events/DialogEvent')
+    dialog: require('../events/DialogEvent'),
+    battle: require('../events/BattleEvent')
 };
 
 function Map(game, config) {

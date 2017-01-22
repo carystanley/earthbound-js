@@ -1,9 +1,12 @@
 ## TO DO
 
 - [ ] Add Items Config
+- [ ] Add Enemy Config
 - [ ] Setup CutScene SubState
 - [ ] Inventory
-- [ ] Add Enemy Config
+- [ ] Menu System
+    - [ ] Menu
+    - [ ] MenuItem
 - [ ] Overworld Enemy Entity
     - [ ] Overworld Chase AI
     - [ ] Overworld Wander AI
@@ -11,9 +14,6 @@
     - [ ] Attack Order
     - [ ] Actions
     - [ ] Party
-- [ ] Menu System
-    - [ ] Menu
-    - [ ] MenuItem
 - [ ] Dialog Choice System
 - [ ] Stats
 - [ ] X

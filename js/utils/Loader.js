@@ -1,3 +1,5 @@
+/* global Phaser */
+
 var Config = require('./Config');
 
 var Loader = {};
@@ -8,7 +10,9 @@ Loader.loadResource = function (game, id) {
 
     switch (dep.type) {
         case 'image':
-            if (game.cache.checkImageKey(dep.id)) return;
+            if (game.cache.checkImageKey(dep.id)) {
+                return;
+            }
             game.load.image(dep.id, dep.path);
             break;
 
@@ -16,7 +20,9 @@ Loader.loadResource = function (game, id) {
             break;
 
         case 'map':
-            if (game.cache.checkTilemapKey(dep.id)) return;
+            if (game.cache.checkTilemapKey(dep.id)) {
+                return;
+            }
             game.load.tilemap(dep.id, dep.path, null, Phaser.Tilemap.TILED_JSON);
             if (dep.tileset) {
                 dep.tileset.forEach(function(tilesetId) {
@@ -37,12 +43,16 @@ Loader.loadResource = function (game, id) {
             break;
 
         case 'audio':
-            if (game.cache.checkSoundKey(dep.id)) return;
+            if (game.cache.checkSoundKey(dep.id)) {
+                return;
+            }
             game.load.audio(dep.id, dep.path);
             break;
 
         case 'bitmapfont':
-            if (game.cache.checkBitmapFontKey(dep.id)) return;
+            if (game.cache.checkBitmapFontKey(dep.id)) {
+                return;
+            }
             game.load.bitmapFont(dep.id, dep.path, dep.meta);
             break;
     }

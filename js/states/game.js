@@ -1,3 +1,5 @@
+/* global Phaser */
+
 var Config = require('../utils/Config')
 var Loader = require('../utils/Loader');
 var SubState = require('../utils/SubState');
@@ -61,8 +63,8 @@ game.create = function () {
     this.encounterMatte = new EncounterMatteComponent(game.game);
     this.chatDialog = new DialogComponent(game.game);
     this.menus = {
-         world: new MenuComponent(game.game, {x: 8, y: 8, width: 64, height: 64, rows: 3}),
-         worldgoods: new MenuComponent(game.game, {x: 32, y: 32, width: 152, height: 64, rows: 3})
+        world: new MenuComponent(game.game, {x: 8, y: 8, width: 64, height: 64, rows: 3}),
+        worldgoods: new MenuComponent(game.game, {x: 32, y: 32, width: 152, height: 64, rows: 3})
     }
     this.switchSubState('world');
 

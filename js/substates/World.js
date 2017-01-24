@@ -1,3 +1,5 @@
+/* global Phaser */
+
 var WorldSubState = function(parent) {
     this.parent = parent;
 }

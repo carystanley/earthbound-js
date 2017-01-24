@@ -11,9 +11,9 @@ WorldGoodsMenuSubState.prototype.menuId = 'worldgoods';
 
 WorldGoodsMenuSubState.prototype.getOptions = function() {
     return [
-        {id: 'sneaker', text:'Old Sneaker'},
-        {id: 'stungun', text:'Stun Gun'},
-        {id: 'sock', text:'Sock'}
+        {id: 'sneaker', text: 'Old Sneaker'},
+        {id: 'stungun', text: 'Stun Gun'},
+        {id: 'sock', text: 'Sock'}
     ];
 };
 

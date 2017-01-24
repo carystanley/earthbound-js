@@ -16,7 +16,7 @@ function Map(game, config) {
 
     this.backgroundLayer = this.map.createLayer('background');
     this.foregroundLayer = this.map.createLayer('foreground');
-    //floatingLayer = map.createLayer('floating');
+    // floatingLayer = map.createLayer('floating');
 
     this.locations = this.setupLocations(this.map);
     this.events = this.setupEvents(this.game, this.map);
@@ -36,7 +36,7 @@ function Map(game, config) {
         slopeMap.push(slopeLookup[i] !== null ? slopeLookup[i] || 'FULL' : undefined);
     }
     this.game.game.slopes.convertTilemapLayer(this.backgroundLayer, slopeMap);
-    //this.map.setCollisionBetween(0, 291, true, 'background');
+    // this.map.setCollisionBetween(0, 291, true, 'background');
 }
 
 Map.prototype.getEvents = function () {
@@ -52,7 +52,7 @@ Map.prototype.setupSpawns = function (game, map) {
 }
 
 Map.prototype.setupEvents = function (game, map) {
-    events = [];
+    var events = [];
     map.objects['Events'].forEach(function(element){
         events.push(new (EventTypes[element.type])(game, element));
     });

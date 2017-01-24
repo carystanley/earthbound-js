@@ -14,17 +14,16 @@ MenuSubState.prototype.update = function() {
     var state = this.parent;
 
     if (this.coolOff <= 0) {
-
         if (state.cancelKey.isDown) {
-          this.onCancel && this.onCancel();
+            this.onCancel && this.onCancel();
         } else if (state.actionKey.isDown) {
-          this.onSelect && this.onSelect(this.menu.getSelectedId());
+            this.onSelect && this.onSelect(this.menu.getSelectedId());
         } else if (state.cursors.up.isDown) {
-          this.menu.selectionUp()
-          this.setCoolOff();
+            this.menu.selectionUp()
+            this.setCoolOff();
         } else if (state.cursors.down.isDown) {
-          this.menu.selectionDown()
-          this.setCoolOff();
+            this.menu.selectionDown()
+            this.setCoolOff();
         }
     } else {
         this.coolOff--;

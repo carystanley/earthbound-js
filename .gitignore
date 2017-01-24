@@ -32,4 +32,5 @@ Icon?
 /.cake_task_cache
 
 # Build files
-/build/*
+/build/**
+/index.html

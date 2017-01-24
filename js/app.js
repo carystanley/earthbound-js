@@ -18,9 +18,6 @@ Config.load({
     lang: require('../config/lang.json')
 });
 
-require('slopes');
-require('ninepatch');
-
 // Automatically register each state.
 Object.keys(states).forEach(function(key) {
     var state = states[key];

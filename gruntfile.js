@@ -82,7 +82,7 @@ module.exports = function (grunt) {
                 src: ['<%= project.src %>/app.js'],
                 dest: '<%= project.bundle %>',
                 options: {
-                    transform: ['browserify-shim'],
+                    transform: [],
                     watch: true,
                     browserifyOptions: {
                         debug: !productionBuild
@@ -151,6 +151,13 @@ module.exports = function (grunt) {
 */
 
         copy: {
+            libs: {
+                files: [
+                    { src: ['lib/nine-patch-phaser-plugin.min.js'], dest: 'build/js/nine-patch-phaser-plugin.min.js' },
+                    { src: ['lib/phaser-arcade-slopes.min.js'], dest: 'build/js/phaser-arcade-slopes.min.js' },
+                    { src: ['lib/stats.min.js'], dest: 'build/js/stats.min.js' }
+                ]
+            },
             phaserArcade: {
                 files: [
                     { src: ['node_modules/phaser/build/custom/phaser-arcade-physics.js'], dest: 'build/js/phaser.js' }
@@ -230,6 +237,7 @@ module.exports = function (grunt) {
         'stylus',
         'uglify',
         'copy:phaserArcadeMin',
+        'copy:libs',
         /* 'cacheBust', */
         'connect',
         'open',

@@ -13,17 +13,6 @@
     "slopes": "./js/lib/phaser-arcade-slopes.min.js",
     "ninepatch": "./js/lib/nine-patch-phaser-plugin.min.js"
   },
-  "browserify-shim": {
-    "Stats": {
-      "exports": "Stats"
-    },
-    "slopes": {
-      "exports": "slopes"
-    },
-    "ninepatch": {
-      "exports": "ninepatch"
-    }
-  },
   "devDependencies": {
     "browserify": "^13.0.0",
     "browserify-shim": "^3.8.12",

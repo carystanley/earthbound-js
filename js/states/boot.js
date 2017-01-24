@@ -1,4 +1,5 @@
-var Stats = require('Stats');
+/* global Stats */
+
 var properties = require('../properties');
 var boot = {};
 

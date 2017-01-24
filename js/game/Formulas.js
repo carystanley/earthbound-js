@@ -33,7 +33,7 @@ function surviveMortalDamage(stats) {
 
 // 1. Miss - Each weapon and NPC/enemy has a miss rate. Unarmed PCs have a miss rate of 1/16. Crying and/or nausea will increase this miss rate by 8/16. If the weapon misses, skip the remaining steps.
 function didMiss(stats) {
-  return probabilityTest(1/16 || stats.missRate + ())
+  return probabilityTest(stats.missRate || 1/16);
 }
 
 // 2. SMAAAASH! - With the Bash command or Bash-like enemy/NPC attacks, the probability of a SMAAAASH! is equal to guts/500 or 1/20, whichever is greater. If a SMAAAASH is successful, it deals 4*offense-defense damage, and skip the remaining steps. (Yes, even step 5.) This damage is still affected by defending if applicable. If the target had a physical shield, it will be depleted.

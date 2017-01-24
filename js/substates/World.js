@@ -5,7 +5,7 @@ var WorldSubState = function(parent) {
 WorldSubState.prototype.enter = function() {
     var state = this.parent;
     state.playerDisabled = false;
-    state.game.camera.follow(state.player, Phaser.Camera.FOLLOW_TOPDOWN);
+    state.game.camera.follow(state.player.getLeader(), Phaser.Camera.FOLLOW_TOPDOWN);
     this.actionCoolOff = 20;
 };
 
@@ -25,7 +25,7 @@ WorldSubState.prototype.update = function() {
         var events = state.currentMap.getEvents();
 
         state.physics.arcade.collide(state.player, state.currentMap.backgroundLayer);
-        state.physics.arcade.collide(state.player, events, function(player, event) {
+        state.physics.arcade.collide(state.player, events, function(event, player) {
             event.onTouch();
         });
     }

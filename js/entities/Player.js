@@ -1,4 +1,4 @@
-Character = require('./Character');
+var Character = require('./Character');
 
 function Player(game, map, x, y, skin) {
     Character.call(this, game, x, y, skin, true);

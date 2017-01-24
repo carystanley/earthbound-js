@@ -1,8 +1,7 @@
 var Config = require('../utils/Config')
 var Loader = require('../utils/Loader');
 var SubState = require('../utils/SubState');
-var Follower = require('../entities/Follower');
-var Player = require('../entities/Player');
+var PlayerGroup = require('../entities/PlayerGroup');
 var Map = require('../map/Map');
 var substates = {
     world: require('../substates/World'),
@@ -33,9 +32,6 @@ game.preload = function () {
     game.load.spritesheet('actors', 'images/actors.png', 24, 32);
 }
 
-var follower;
-var follower2;
-
 game.create = function () {
 	this.mapConfig = Config.getResource(this.mapId);
 
@@ -53,12 +49,7 @@ game.create = function () {
     this.currentMap = new Map(game, this.mapConfig);
     this.characters = game.add.group();
     var playerStart = this.currentMap.getLocation(this.startLocationId);
-    this.player = new Player(game.game, this.currentMap, playerStart.x, playerStart.y, 0);
-    follower = new Follower(game.game, 1, this.player);
-    follower2 = new Follower(game.game, 2, follower);
-    this.characters.add(this.player);
-    this.characters.add(follower);
-    this.characters.add(follower2);
+    this.player = new PlayerGroup(game.game, this.currentMap, playerStart.x, playerStart.y);
     this.matte = new MatteComponent(game.game);
     this.encounterMatte = new EncounterMatteComponent(game.game);
     this.chatDialog = new DialogComponent(game.game);

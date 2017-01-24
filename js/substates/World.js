@@ -21,6 +21,7 @@ WorldSubState.prototype.update = function() {
     }
 
     state.characters.sort('y', Phaser.Group.SORT_ASCENDING);
+    state.player.sort('y', Phaser.Group.SORT_ASCENDING);
     if (!state.playerDisabled) {
         var events = state.currentMap.getEvents();
 

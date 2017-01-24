@@ -5,12 +5,12 @@ var EventTypes = {
 var Spawn = require('../events/Spawn');
 
 function Map(game, config) {
-	this.game = game;
-	this.id = config.id;
+    this.game = game;
+    this.id = config.id;
     this.map = game.add.tilemap(config.id);
     config.tileset.forEach(function(tileset) {
-		this.map.addTilesetImage(tileset, tileset);
-	}, this);
+        this.map.addTilesetImage(tileset, tileset);
+    }, this);
 
     game.world.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
 
@@ -23,18 +23,18 @@ function Map(game, config) {
     this.spawns = this.setupSpawns(this.game, this.map);
 
     var slopeLookup = {
-	    291: null,
-		158: 'HALF_TOP_RIGHT',
-		159: 'HALF_TOP_LEFT',
-		97: null,
-		80: 'HALF_TOP_RIGHT',
-		81: 'HALF_TOP_LEFT',
-		82: 'HALF_TOP_LEFT'
-	}
+        291: null,
+        158: 'HALF_TOP_RIGHT',
+        159: 'HALF_TOP_LEFT',
+        97: null,
+        80: 'HALF_TOP_RIGHT',
+        81: 'HALF_TOP_LEFT',
+        82: 'HALF_TOP_LEFT'
+    }
     var slopeMap = [];
     for (var i = 0; i <= 291; i++) {
         slopeMap.push(slopeLookup[i] !== null ? slopeLookup[i] || 'FULL' : undefined);
-	}
+    }
     this.game.game.slopes.convertTilemapLayer(this.backgroundLayer, slopeMap);
     //this.map.setCollisionBetween(0, 291, true, 'background');
 }
@@ -65,7 +65,7 @@ Map.prototype.setupLocations = function (map) {
         locations[element.name] = {
             x: element.x + element.width / 2,
             y: element.y + element.height / 2
-		};
+        };
     });
     return locations;
 }

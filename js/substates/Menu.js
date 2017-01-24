@@ -19,7 +19,7 @@ MenuSubState.prototype.update = function() {
           this.onCancel && this.onCancel();
         } else if (state.actionKey.isDown) {
           this.onSelect && this.onSelect(this.menu.getSelectedId());
-    	  } else if (state.cursors.up.isDown) {
+        } else if (state.cursors.up.isDown) {
           this.menu.selectionUp()
           this.setCoolOff();
         } else if (state.cursors.down.isDown) {

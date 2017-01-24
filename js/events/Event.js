@@ -1,7 +1,7 @@
 
 function Event(game, settings) {
-	this.game = game;
-	this.settings = settings;
+    this.game = game;
+    this.settings = settings;
 
     Phaser.Sprite.call(this, game, settings.x || 0, settings.y || 0);
     this.renderable = false;

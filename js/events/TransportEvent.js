@@ -8,7 +8,7 @@ TransportEvent.prototype = Object.create(Event.prototype);
 TransportEvent.prototype.constructor = TransportEvent;
 
 TransportEvent.prototype.onTouch = function() {
-	var properties = this.settings.properties;
+    var properties = this.settings.properties;
     this.game.transport(properties.map, properties.location);
 };
 

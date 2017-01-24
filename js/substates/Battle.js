@@ -11,7 +11,7 @@ BattleSubState.prototype.update = function() {
     var state = this.parent;
     if (state.actionKey.isDown) {
         state.switchSubState('world');
-  	}
+    }
 };
 
 BattleSubState.prototype.transitionOut = function(callback) {

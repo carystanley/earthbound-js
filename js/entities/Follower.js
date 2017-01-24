@@ -15,8 +15,8 @@ Follower.prototype.initQueue = function(followCharacter, followMax) {
     this.followerCursor = 1;
     this.followMax = followMax;
     for (var f = 0; f < followMax; f++) {
-		this.followQueue[f] = {animation: 'down', x: followCharacter.x, y: followCharacter.y};
-	}
+        this.followQueue[f] = {animation: 'down', x: followCharacter.x, y: followCharacter.y};
+    }
 };
 
 Follower.prototype.updateQueue = function() {
@@ -33,16 +33,16 @@ Follower.prototype.updateQueue = function() {
 
 Follower.prototype.update = function () {
     if (this.game.state.getCurrentState().playerDisabled) {
-		this.animations.stop();
-	    return;
+        this.animations.stop();
+        return;
     }
 
     // Handle Following
     if (this.followCharacter.animations.currentAnim.isPlaying) {
         this.updateQueue();
     } else {
-		this.animations.stop();
-	}
+        this.animations.stop();
+    }
 }
 
 module.exports = Follower;

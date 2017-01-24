@@ -27,18 +27,18 @@ game.init = function(mapid, startLocation) {
 }
 
 game.preload = function () {
-	Loader.loadResource(game.game, 'default');
-	Loader.loadResource(game.game, this.mapId);
+    Loader.loadResource(game.game, 'default');
+    Loader.loadResource(game.game, this.mapId);
 
     game.load.spritesheet('actors', 'images/actors.png', 24, 32);
 }
 
 game.create = function () {
-	this.mapConfig = Config.getResource(this.mapId);
+    this.mapConfig = Config.getResource(this.mapId);
 
-	this.physics.startSystem(Phaser.Physics.ARCADE);
-	this.game.plugins.add(Phaser.Plugin.ArcadeSlopes);
-	game.physics.arcade.gravity.y = 0;
+    this.physics.startSystem(Phaser.Physics.ARCADE);
+    this.game.plugins.add(Phaser.Plugin.ArcadeSlopes);
+    game.physics.arcade.gravity.y = 0;
 
     if (this.mapConfig.bgm) {
         this.backgroundMusic = game.add.audio(this.mapConfig.bgm);
@@ -91,11 +91,11 @@ game.switchSubState = function (id) {
 /* ------- Actions ---------- */
 
 game.fadeIn = function (callback) {
-	this.matte.fadeIn(callback);
+    this.matte.fadeIn(callback);
 };
 
 game.fadeOut = function (callback) {
-	this.matte.fadeOut(callback);
+    this.matte.fadeOut(callback);
 };
 
 game.soundEffectPlay = function (id) {
@@ -103,25 +103,25 @@ game.soundEffectPlay = function (id) {
 };
 
 game.transport = function(mapId, locationId) {
-	var self = this;
-	this.switchSubState('transition');
-	this.soundEffectPlay('sfx_door_open');
-	this.fadeOut(function() {
-		if (self.mapId === mapId) {
+    var self = this;
+    this.switchSubState('transition');
+    this.soundEffectPlay('sfx_door_open');
+    this.fadeOut(function() {
+        if (self.mapId === mapId) {
             var locationPos = self.currentMap.getLocation(locationId);
             self.player.reset(locationPos.x, locationPos.y);
             self.fadeIn(function() {
-		        self.switchSubState('world');
-			});
+                self.switchSubState('world');
+            });
         } else {
             self.backgroundMusic.stop();
             self.state.start('game', true, false, mapId, locationId);
-	    }
+        }
     });
 };
 
 game.showDialog = function (displayText) {
-	this.chatDialog.setText(displayText);
+    this.chatDialog.setText(displayText);
     this.switchSubState('dialog');
 }
 

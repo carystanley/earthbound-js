@@ -18,12 +18,12 @@ Player.prototype.update = function () {
     this.body.velocity.x = 0;
     this.body.velocity.y = 0;
     if (this.game.state.getCurrentState().playerDisabled) {
-		this.animations.stop();
-	    return;
+        this.animations.stop();
+        return;
     }
 
-	var direction = null;
-	var cursors = this.game.state.getCurrentState().cursors;
+    var direction = null;
+    var cursors = this.game.state.getCurrentState().cursors;
 
     if (cursors.left.isDown)
     {

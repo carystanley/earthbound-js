@@ -15,8 +15,8 @@ SubState.prototype.switch = function (id) {
 
     transitionOut(function() {
         if (self.currentState && self.currentState.exit) {
-	          self.currentState.exit();
-	      }
+            self.currentState.exit();
+        }
         self.currentState = null;
         var SubState = self.substates[id];
         var newState = new SubState(self.parentState);
@@ -27,7 +27,7 @@ SubState.prototype.switch = function (id) {
             self.currentState = newState;
             if (self.currentState && self.currentState.enter) {
                 self.currentState.enter();
-	         }
+            }
         });
     });
 };

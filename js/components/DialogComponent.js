@@ -1,6 +1,6 @@
 
 DialogComponent = function(game) {
-	game.cache.addNinePatch('ninepatch_dialog', 'image_dialog', null, 8, 8, 16, 16);
+    game.cache.addNinePatch('ninepatch_dialog', 'image_dialog', null, 8, 8, 16, 16);
     this.container = new Phaser.NinePatchImage(game, 96, 8, 'ninepatch_dialog');
     this.container.targetWidth = 152;
     this.container.targetHeight = 64
@@ -19,24 +19,24 @@ DialogComponent = function(game) {
 };
 
 DialogComponent.prototype.update = function() {
-	if (this.buffer.length > 0) {
-		// If we have more text to show, and we have reached lineCount
-	    if (this.currentLine >= this.lineCount) {
-	        this.currentLine--;
-		    for (var i = 0; i < (this.lineCount - 1); i++) {
-			    this.chatTxt[i].setText(this.chatTxt[i+1].text);
-			}
-		    this.chatTxt[this.currentLine].setText('');
-		}
+    if (this.buffer.length > 0) {
+        // If we have more text to show, and we have reached lineCount
+        if (this.currentLine >= this.lineCount) {
+            this.currentLine--;
+            for (var i = 0; i < (this.lineCount - 1); i++) {
+                this.chatTxt[i].setText(this.chatTxt[i+1].text);
+            }
+            this.chatTxt[this.currentLine].setText('');
+        }
 
         if (this.buffer[0].length > 0) {
-	        var c = this.buffer[0].substr(0, 1);
-	        this.buffer[0] = this.buffer[0].substr(1);
-	        this.chatTxt[this.currentLine].setText(this.chatTxt[this.currentLine].text + c);
-	    } else {
-	        this.buffer.shift();
-	        this.currentLine++;
-	    }
+            var c = this.buffer[0].substr(0, 1);
+            this.buffer[0] = this.buffer[0].substr(1);
+            this.chatTxt[this.currentLine].setText(this.chatTxt[this.currentLine].text + c);
+        } else {
+            this.buffer.shift();
+            this.currentLine++;
+        }
     }
 };
 

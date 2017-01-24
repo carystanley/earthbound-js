@@ -27,8 +27,8 @@ Enemy.prototype.update = function () {
     if (this.game.state.getCurrentState().playerDisabled) {
       this.body.velocity.x = 0;
       this.body.velocity.y = 0;
-	   	this.animations.stop();
-	    return;
+        this.animations.stop();
+        return;
     }
 
   this.timer--;
@@ -41,7 +41,7 @@ Enemy.prototype.update = function () {
   this.body.velocity.x = this.velX;
   this.body.velocity.y = this.velY;
 
-	var direction = null;
+    var direction = null;
 
     if ((this.body.velocity.x < this.body.velocity.y) && (this.body.velocity.x < 0))
     {

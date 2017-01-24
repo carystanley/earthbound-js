@@ -17,7 +17,7 @@ WorldSubState.prototype.update = function() {
     } else {
         if (state.cancelKey.isDown) {
             state.switchSubState('worldmenu');
-  	    }
+        }
     }
 
     state.enemies.sort('y', Phaser.Group.SORT_ASCENDING);

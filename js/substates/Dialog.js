@@ -4,19 +4,19 @@ var DialogSubState = function(state) {
 }
 
 DialogSubState.prototype.enter = function() {
-	  this.parent.chatDialog.show();
+      this.parent.chatDialog.show();
 };
 
 DialogSubState.prototype.update = function() {
     var state = this.parent;
 
-		if (state.actionKey.isDown) {
-		  	state.switchSubState('world');
-		}
+        if (state.actionKey.isDown) {
+            state.switchSubState('world');
+        }
 };
 
 DialogSubState.prototype.exit = function() {
-	  this.parent.chatDialog.hide();
+      this.parent.chatDialog.hide();
 };
 
 module.exports = DialogSubState;

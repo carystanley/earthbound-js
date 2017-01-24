@@ -1,5 +1,6 @@
+/* global Phaser */
 
-DialogComponent = function(game) {
+function DialogComponent (game) {
     game.cache.addNinePatch('ninepatch_dialog', 'image_dialog', null, 8, 8, 16, 16);
     this.container = new Phaser.NinePatchImage(game, 96, 8, 'ninepatch_dialog');
     this.container.targetWidth = 152;
@@ -41,9 +42,10 @@ DialogComponent.prototype.update = function() {
 };
 
 DialogComponent.prototype.setText = function(text) {
+    var line;
     do {
         // Private method I wish was Public
-        var line = this.chatTxt[0].scanLine(this.chatTxt[0]._data.font, 1, text);
+        line = this.chatTxt[0].scanLine(this.chatTxt[0]._data.font, 1, text);
         this.buffer.push(line.text);
         text = text.substr(line.text.length + 1);
     } while (line.end === false);

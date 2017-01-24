@@ -5,9 +5,9 @@ var Inventory = function (maxSize) {
 };
 
 Inventory.prototype.add = function(itemId) {
-   if (this.items.length < maxSize) {
-       this.items.push(itemId);
-   }
+    if (this.items.length < this.maxSize) {
+        this.items.push(itemId);
+    }
 }
 
 Inventory.prototype.remove = function(itemPos) {

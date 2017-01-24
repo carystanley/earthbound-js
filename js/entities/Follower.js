@@ -1,4 +1,4 @@
-Character = require('./Character');
+var Character = require('./Character');
 
 function Follower(game, skin, followCharacter) {
     Character.call(this, game, followCharacter.x, followCharacter.y, skin, false);

@@ -4,10 +4,10 @@ function Player(game, map, x, y, skin) {
     Character.call(this, game, x, y, skin, true);
     this.map = map;
 
-    //this.body.drag.x = 640;
-    //this.body.drag.y = 640;
-    //this.body.maxVelocity.x = 80;
-    //this.body.maxVelocity.y = 80;
+    // this.body.drag.x = 640;
+    // this.body.drag.y = 640;
+    // this.body.maxVelocity.x = 80;
+    // this.body.maxVelocity.y = 80;
     this.accel = 80;
 }
 

@@ -1,5 +1,6 @@
+/* global Phaser */
 
-MenuComponent = function(game, options) {
+function MenuComponent (game, options) {
     game.cache.addNinePatch('ninepatch_dialog', 'image_dialog', null, 8, 8, 16, 16);
     this.container = new Phaser.NinePatchImage(game, options.x, options.y, 'ninepatch_dialog');
     this.container.targetWidth = options.width;
@@ -29,31 +30,31 @@ MenuComponent.prototype.setOptions = function(options) {
 MenuComponent.prototype.reset = function() {
     var options = this.options;
     for (var i = 0; i < this.menuItemCount; i++) {
-              var option = options[i];
+        var option = options[i];
         this.menuItems[i].setText((this.selection === i ? '@ ' : '') + ((option && option.text) || ''));
     }
 };
 
 MenuComponent.prototype.selectionUp = function() {
-  this.selection--;
-  if (this.selection < 0) {
-    this.selection = 0;
-  }
-  this.reset();
+    this.selection--;
+    if (this.selection < 0) {
+        this.selection = 0;
+    }
+    this.reset();
 };
 
 MenuComponent.prototype.selectionDown = function() {
-  this.selection++;
-  if (this.selection >= this.menuItemCount) {
-    this.selection = this.menuItemCount - 1;
-  }
-  this.reset();
+    this.selection++;
+    if (this.selection >= this.menuItemCount) {
+        this.selection = this.menuItemCount - 1;
+    }
+    this.reset();
 };
 
 MenuComponent.prototype.getSelectedId = function() {
-  return this.options &&
+    return this.options &&
         this.options[this.selection] &&
-            this.options[this.selection].id;
+        this.options[this.selection].id;
 };
 
 MenuComponent.prototype.show = function() {

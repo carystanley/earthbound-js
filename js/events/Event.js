@@ -1,3 +1,4 @@
+/* global Phaser */
 
 function Event(game, settings) {
     this.game = game;

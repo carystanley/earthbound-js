@@ -1,6 +1,6 @@
 
 var EncounterMatteComponent = function(game) {
-  var matte = game.add.graphics(0, 0);
+    var matte = game.add.graphics(0, 0);
     matte.fixedToCamera = true;
     matte.beginFill(0xFF0000, 1);
     matte.drawRect(0, 0, game.width, game.height);
@@ -13,7 +13,7 @@ var EncounterMatteComponent = function(game) {
 EncounterMatteComponent.prototype.fadeTween = function (alpha, callback) {
     callback = callback || function() {};
 
-    s = this.game.add.tween(this.matte);
+    var s = this.game.add.tween(this.matte);
     s.to({ alpha: alpha }, 500, null);
     s.onComplete.add(callback);
     s.start();

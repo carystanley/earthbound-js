@@ -23,7 +23,7 @@ var Interpreter = {
         this.commands[command.cmd](context, command, done);
     },
     registerCommands: function(commands) {
-       this.commands = commands;
+        this.commands = commands;
     }
 };
 

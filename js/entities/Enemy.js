@@ -1,4 +1,4 @@
-Character = require('./Character');
+var Character = require('./Character');
 
 function Enemy(game, type, x, y) {
     Character.call(this, game, x, y, 7, true);
@@ -25,21 +25,21 @@ Enemy.prototype.update = function () {
     }
 
     if (this.game.state.getCurrentState().playerDisabled) {
-      this.body.velocity.x = 0;
-      this.body.velocity.y = 0;
+        this.body.velocity.x = 0;
+        this.body.velocity.y = 0;
         this.animations.stop();
         return;
     }
 
-  this.timer--;
-  if (this.timer <= 0) {
-      this.velX = Math.floor(Math.random() * 2 - 1) * this.accel;
-      this.velY = Math.floor(Math.random() * 2 - 1) * this.accel;
-      this.timer = 60;
-  }
+    this.timer--;
+    if (this.timer <= 0) {
+        this.velX = Math.floor(Math.random() * 2 - 1) * this.accel;
+        this.velY = Math.floor(Math.random() * 2 - 1) * this.accel;
+        this.timer = 60;
+    }
 
-  this.body.velocity.x = this.velX;
-  this.body.velocity.y = this.velY;
+    this.body.velocity.x = this.velX;
+    this.body.velocity.y = this.velY;
 
     var direction = null;
 

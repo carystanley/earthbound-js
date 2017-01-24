@@ -1,3 +1,4 @@
+/* global Phaser */
 
 function Character(game, x, y, skin, physics) {
     var offest = skin * 8;

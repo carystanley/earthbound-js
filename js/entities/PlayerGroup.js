@@ -1,3 +1,5 @@
+/* global Phaser */
+
 var Follower = require('./Follower');
 var Player = require('./Player');
 

@@ -8,7 +8,12 @@ var properties = require('./properties')
 
 var Config = require('./utils/Config');
 Config.load({
-    resources: require('../config/resources.json')
+    resources: require('../config/resources.json'),
+    characters: require('../config/characters.json'),
+    enemies: require('../config/enemies.json'),
+    events: require('../config/events.json'),
+    items: require('../config/items.json'),
+    lang: require('../config/lang.json')
 });
 
 require('slopes');

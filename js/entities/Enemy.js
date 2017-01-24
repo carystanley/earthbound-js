@@ -5,6 +5,9 @@ function Enemy(game, type, x, y) {
     this.timer = 0;
     this.accel = 80;
     this.visLife = 60;
+
+    this.velX = 0;
+    this.velY = 0;
 }
 
 Enemy.prototype = Object.create(Character.prototype);
@@ -21,19 +24,22 @@ Enemy.prototype.update = function () {
         this.visLife = 60;
     }
 
-    //this.body.velocity.x = 0;
-    //this.body.velocity.y = 0;
     if (this.game.state.getCurrentState().playerDisabled) {
+      this.body.velocity.x = 0;
+      this.body.velocity.y = 0;
 	   	this.animations.stop();
 	    return;
     }
 
   this.timer--;
   if (this.timer <= 0) {
-      this.body.velocity.x = Math.floor(Math.random() * 2 - 1) * this.accel;
-      this.body.velocity.y = Math.floor(Math.random() * 2 - 1) * this.accel;
+      this.velX = Math.floor(Math.random() * 2 - 1) * this.accel;
+      this.velY = Math.floor(Math.random() * 2 - 1) * this.accel;
       this.timer = 60;
   }
+
+  this.body.velocity.x = this.velX;
+  this.body.velocity.y = this.velY;
 
 	var direction = null;
 

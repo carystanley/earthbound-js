@@ -20,12 +20,16 @@ WorldSubState.prototype.update = function() {
   	    }
     }
 
-    state.characters.sort('y', Phaser.Group.SORT_ASCENDING);
+    state.enemies.sort('y', Phaser.Group.SORT_ASCENDING);
     state.player.sort('y', Phaser.Group.SORT_ASCENDING);
     if (!state.playerDisabled) {
         var events = state.currentMap.getEvents();
 
         state.physics.arcade.collide(state.player, state.currentMap.backgroundLayer);
+        state.physics.arcade.collide(state.enemies, state.currentMap.backgroundLayer);
+        state.physics.arcade.collide(state.player, state.enemies, function(player, enemy) {
+            enemy.onTouch();
+        });
         state.physics.arcade.collide(state.player.getLeader(), events, function(player, event) {
             event.onTouch();
         });

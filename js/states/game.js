@@ -2,6 +2,7 @@ var Config = require('../utils/Config')
 var Loader = require('../utils/Loader');
 var SubState = require('../utils/SubState');
 var PlayerGroup = require('../entities/PlayerGroup');
+var Enemy = require('../entities/Enemy');
 var Map = require('../map/Map');
 var substates = {
     world: require('../substates/World'),
@@ -47,7 +48,13 @@ game.create = function () {
         sfx_door_open: game.add.audio('sfx_door_open')
     };
     this.currentMap = new Map(game, this.mapConfig);
-    this.characters = game.add.group();
+    this.enemies = game.add.group();
+
+    this.spawns = game.add.group();
+    this.currentMap.spawns.forEach(function (spawn) {
+        this.spawns.add(spawn);
+    }, this);
+
     var playerStart = this.currentMap.getLocation(this.startLocationId);
     this.player = new PlayerGroup(game.game, this.currentMap, playerStart.x, playerStart.y);
     this.matte = new MatteComponent(game.game);
@@ -121,6 +128,10 @@ game.showDialog = function (displayText) {
 game.mapTint = function (tint) {
     this.currentMap.foregroundLayer.tint = tint;
     this.currentMap.backgroundLayer.tint = tint;
+}
+
+game.spawnEnemy = function (type, x, y) {
+    this.enemies.add(new Enemy(this.game, type, x, y));
 }
 
 // Use //foregroundLayer.tint = 0x222299; to simulate nighttime

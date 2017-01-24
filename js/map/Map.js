@@ -1,8 +1,8 @@
 var EventTypes = {
     transport: require('../events/TransportEvent'),
-    dialog: require('../events/DialogEvent'),
-    battle: require('../events/BattleEvent')
+    dialog: require('../events/DialogEvent')
 };
+var Spawn = require('../events/Spawn');
 
 function Map(game, config) {
 	this.game = game;
@@ -20,6 +20,7 @@ function Map(game, config) {
 
     this.locations = this.setupLocations(this.map);
     this.events = this.setupEvents(this.game, this.map);
+    this.spawns = this.setupSpawns(this.game, this.map);
 
     var slopeLookup = {
 	    291: null,
@@ -40,6 +41,14 @@ function Map(game, config) {
 
 Map.prototype.getEvents = function () {
     return this.events;
+}
+
+Map.prototype.setupSpawns = function (game, map) {
+    var spawns = [];
+    map.objects['Spawns'].forEach(function(element){
+        spawns.push(new Spawn(game, element));
+    });
+    return spawns;
 }
 
 Map.prototype.setupEvents = function (game, map) {

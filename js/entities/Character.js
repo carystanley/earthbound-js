@@ -1,7 +1,7 @@
 
 function Character(game, x, y, skin, physics) {
 	var offest = skin * 8;
-    Phaser.Sprite.call(this, game, x, y, 'actors');
+    Phaser.Sprite.call(this, game, x, y, 'actors', offest + 4);
     this.animations.add('up', [offest + 0, offest + 1], 5, true);
     this.animations.add('right', [offest + 2, offest + 3], 10, true);
     this.animations.add('down', [offest + 4, offest + 5], 5, true);

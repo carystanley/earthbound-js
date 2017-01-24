@@ -25,7 +25,7 @@ WorldSubState.prototype.update = function() {
         var events = state.currentMap.getEvents();
 
         state.physics.arcade.collide(state.player, state.currentMap.backgroundLayer);
-        state.physics.arcade.collide(state.player, events, function(event, player) {
+        state.physics.arcade.collide(state.player.getLeader(), events, function(player, event) {
             event.onTouch();
         });
     }

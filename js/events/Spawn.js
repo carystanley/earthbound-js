@@ -11,7 +11,6 @@ Spawn.prototype.constructor = Spawn;
 Spawn.prototype.update = function() {
     if (this.inCamera && !this.flagIsVisible) {
         this.flagIsVisible = true;
-        console.error('Spawn!');
         this.onVisible();
     } else if (!this.inCamera && this.flagIsVisible) {
         this.flagIsVisible = false;

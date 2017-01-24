@@ -22,11 +22,13 @@ WorldSubState.prototype.update = function() {
 
     state.enemies.sort('y', Phaser.Group.SORT_ASCENDING);
     state.player.sort('y', Phaser.Group.SORT_ASCENDING);
+
+    state.physics.arcade.collide(state.enemies, state.currentMap.backgroundLayer);
+
     if (!state.playerDisabled) {
         var events = state.currentMap.getEvents();
 
         state.physics.arcade.collide(state.player, state.currentMap.backgroundLayer);
-        state.physics.arcade.collide(state.enemies, state.currentMap.backgroundLayer);
         state.physics.arcade.collide(state.player, state.enemies, function(player, enemy) {
             enemy.onTouch();
         });

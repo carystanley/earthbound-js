@@ -4,12 +4,23 @@ function Enemy(game, type, x, y) {
     Character.call(this, game, x, y, 7, true);
     this.timer = 0;
     this.accel = 80;
+    this.visLife = 60;
 }
 
 Enemy.prototype = Object.create(Character.prototype);
 Enemy.prototype.constructor = Enemy;
 
 Enemy.prototype.update = function () {
+    if (!this.inCamera) {
+        this.visLife--;
+        if (this.visLife < 0) {
+            this.kill();
+            return;
+        }
+    } else {
+        this.visLife = 60;
+    }
+
     //this.body.velocity.x = 0;
     //this.body.velocity.y = 0;
     if (this.game.state.getCurrentState().playerDisabled) {

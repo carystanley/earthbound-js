@@ -4,7 +4,7 @@ var BattleSubState = function(state) {
 }
 
 BattleSubState.prototype.transitionIn = function(callback) {
-    this.parent.encounterMatte.show(callback);
+    this.parent.encounterIn(callback);
 }
 
 BattleSubState.prototype.update = function() {
@@ -15,7 +15,7 @@ BattleSubState.prototype.update = function() {
 };
 
 BattleSubState.prototype.transitionOut = function(callback) {
-    this.parent.encounterMatte.hide(callback);
+    this.parent.encounterOut(callback);
 }
 
 module.exports = BattleSubState;

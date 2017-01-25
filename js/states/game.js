@@ -19,7 +19,6 @@ var uiTypes = {
     menu: require('../ui/MenuComponent'),
     matte: require('../ui/MatteComponent')
 };
-var EncounterMatteComponent = require('../ui/EncounterMatteComponent');
 
 var game = {};
 
@@ -61,7 +60,6 @@ game.create = function () {
 
     var playerStart = this.currentMap.getLocation(this.startLocationId);
     this.player = new PlayerGroup(game.game, this.currentMap, playerStart.x, playerStart.y);
-    this.encounterMatte = new EncounterMatteComponent(game.game);
     this.chatDialog = new DialogComponent(game.game);
     this.setupUI();
     this.switchSubState('world');
@@ -106,6 +104,14 @@ game.fadeIn = function (callback) {
 
 game.fadeOut = function (callback) {
     this.ui.matte.transition(0x000000, 1, 500, callback);
+};
+
+game.encounterIn = function (callback) {
+    this.ui.matte.transition(0xFF0000, 0.5, 500, callback);
+};
+
+game.encounterOut = function (callback) {
+    this.ui.matte.transition(0xFF0000, 0, 10, callback);
 };
 
 game.soundEffectPlay = function (id) {

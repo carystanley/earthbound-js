@@ -16,9 +16,9 @@ var substates = {
 };
 var DialogComponent = require('../ui/DialogComponent');
 var uiTypes = {
-    menu: require('../ui/MenuComponent')
+    menu: require('../ui/MenuComponent'),
+    matte: require('../ui/MatteComponent')
 };
-var MatteComponent = require('../ui/MatteComponent');
 var EncounterMatteComponent = require('../ui/EncounterMatteComponent');
 
 var game = {};
@@ -61,7 +61,6 @@ game.create = function () {
 
     var playerStart = this.currentMap.getLocation(this.startLocationId);
     this.player = new PlayerGroup(game.game, this.currentMap, playerStart.x, playerStart.y);
-    this.matte = new MatteComponent(game.game);
     this.encounterMatte = new EncounterMatteComponent(game.game);
     this.chatDialog = new DialogComponent(game.game);
     this.setupUI();
@@ -72,7 +71,7 @@ game.create = function () {
     this.cancelKey = game.input.keyboard.addKey(Phaser.Keyboard.X);
     this.game.input.keyboard.addKeyCapture([ Phaser.Keyboard.SPACEBAR, Phaser.Keyboard.X ]);
 
-    this.matte.fadeIn();
+    this.fadeIn();
 };
 
 game.setupUI = function() {
@@ -102,11 +101,11 @@ game.switchSubState = function (id) {
 /* ------- Actions ---------- */
 
 game.fadeIn = function (callback) {
-    this.matte.fadeIn(callback);
+    this.ui.matte.fadeIn(callback);
 };
 
 game.fadeOut = function (callback) {
-    this.matte.fadeOut(callback);
+    this.ui.matte.fadeOut(callback);
 };
 
 game.soundEffectPlay = function (id) {

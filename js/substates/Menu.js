@@ -4,7 +4,7 @@ var MenuSubState = function(state) {
 
 MenuSubState.prototype.enter = function() {
     var state = this.parent;
-    this.menu = state.menus[this.menuId];
+    this.menu = state.ui[this.menuId];
     this.menu.setOptions(this.getOptions());
     this.menu.show();
     this.setCoolOff();

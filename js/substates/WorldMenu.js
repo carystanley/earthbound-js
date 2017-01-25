@@ -7,7 +7,7 @@ var WorldMenuSubState = function(state) {
 WorldMenuSubState.prototype = Object.create(MenuSubState.prototype);
 WorldMenuSubState.prototype.constructor = WorldMenuSubState;
 
-WorldMenuSubState.prototype.menuId = 'world';
+WorldMenuSubState.prototype.menuId = 'worldmenu';
 
 WorldMenuSubState.prototype.getOptions = function() {
     return [

@@ -224,6 +224,7 @@ module.exports = function (grunt) {
         'jade',
         'stylus',
         'copy:phaserArcade',
+        'copy:libs',
         'connect',
         'open',
         'watch'

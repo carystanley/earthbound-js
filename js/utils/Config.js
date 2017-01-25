@@ -14,4 +14,8 @@ Config.getResource = function (id) {
     return data;
 };
 
+Config.getConfig = function (key) {
+    return this.config[key];
+}
+
 module.exports = Config;

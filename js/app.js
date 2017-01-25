@@ -15,7 +15,8 @@ Config.load({
     enemies: require('../config/enemies.json'),
     events: require('../config/events.json'),
     items: require('../config/items.json'),
-    lang: require('../config/lang.json')
+    lang: require('../config/lang.json'),
+    ui: require('../config/ui.json')    
 });
 
 // Automatically register each state.

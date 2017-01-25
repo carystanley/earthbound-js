@@ -15,7 +15,9 @@ var substates = {
     worldgoodsmenu: require('../substates/WorldGoodsMenu')
 };
 var DialogComponent = require('../hud/DialogComponent');
-var MenuComponent = require('../hud/MenuComponent');
+var uiTypes = {
+    menu: require('../hud/MenuComponent')
+};
 var MatteComponent = require('../hud/MatteComponent');
 var EncounterMatteComponent = require('../hud/EncounterMatteComponent');
 
@@ -62,10 +64,7 @@ game.create = function () {
     this.matte = new MatteComponent(game.game);
     this.encounterMatte = new EncounterMatteComponent(game.game);
     this.chatDialog = new DialogComponent(game.game);
-    this.menus = {
-        world: new MenuComponent(game.game, {x: 8, y: 8, width: 64, height: 64, rows: 3}),
-        worldgoods: new MenuComponent(game.game, {x: 32, y: 32, width: 152, height: 64, rows: 3})
-    }
+    this.setupUI();
     this.switchSubState('world');
 
     this.cursors = game.input.keyboard.createCursorKeys();
@@ -75,6 +74,16 @@ game.create = function () {
 
     this.matte.fadeIn();
 };
+
+game.setupUI = function() {
+    var uiConfig = Config.getConfig('ui');
+    var ui = {};
+    Object.keys(uiConfig).forEach(function (key) {
+        var config = uiConfig[key];
+        ui[key] = new (uiTypes[config.type])(game.game, config);
+    });
+    this.ui = ui;
+}
 
 /* Simple Debug
 game.render = function () {

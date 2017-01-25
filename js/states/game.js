@@ -14,12 +14,12 @@ var substates = {
     worldmenu: require('../substates/WorldMenu'),
     worldgoodsmenu: require('../substates/WorldGoodsMenu')
 };
-var DialogComponent = require('../hud/DialogComponent');
+var DialogComponent = require('../ui/DialogComponent');
 var uiTypes = {
-    menu: require('../hud/MenuComponent')
+    menu: require('../ui/MenuComponent')
 };
-var MatteComponent = require('../hud/MatteComponent');
-var EncounterMatteComponent = require('../hud/EncounterMatteComponent');
+var MatteComponent = require('../ui/MatteComponent');
+var EncounterMatteComponent = require('../ui/EncounterMatteComponent');
 
 var game = {};
 

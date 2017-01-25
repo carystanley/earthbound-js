@@ -1,5 +1,5 @@
 module.exports = {
-    menu: require('./MenuComponent'),
-    matte: require('./MatteComponent'),
+    menu: require('./Menu'),
+    matte: require('./Matte'),
     frame: require('./Frame')
 };

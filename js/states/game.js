@@ -101,11 +101,11 @@ game.switchSubState = function (id) {
 /* ------- Actions ---------- */
 
 game.fadeIn = function (callback) {
-    this.ui.matte.fadeIn(callback);
+    this.ui.matte.transition(0x000000, 0, 500, callback);
 };
 
 game.fadeOut = function (callback) {
-    this.ui.matte.fadeOut(callback);
+    this.ui.matte.transition(0x000000, 1, 500, callback);
 };
 
 game.soundEffectPlay = function (id) {

@@ -17,5 +17,12 @@
     },
     "matte": {
         "type": "matte"
-    }
+    },
+    "new": {
+        "type": "frame",
+        "x": 8,
+        "y": 8,
+        "width": 64,
+        "height": 64
+    },
 }

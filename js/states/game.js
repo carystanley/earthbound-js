@@ -15,10 +15,7 @@ var substates = {
     worldgoodsmenu: require('../substates/WorldGoodsMenu')
 };
 var DialogComponent = require('../ui/DialogComponent');
-var uiTypes = {
-    menu: require('../ui/MenuComponent'),
-    matte: require('../ui/MatteComponent')
-};
+var uiTypes = require('../ui');
 
 var game = {};
 

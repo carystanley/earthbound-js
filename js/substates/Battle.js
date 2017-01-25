@@ -4,7 +4,11 @@ var BattleSubState = function(state) {
 }
 
 BattleSubState.prototype.transitionIn = function(callback) {
-    this.parent.encounterIn(callback);
+    var state = this.parent;
+    state.encounterIn(function () {
+        state.hideWorld();
+        callback();
+    });
 }
 
 BattleSubState.prototype.update = function() {
@@ -15,7 +19,9 @@ BattleSubState.prototype.update = function() {
 };
 
 BattleSubState.prototype.transitionOut = function(callback) {
-    this.parent.encounterOut(callback);
+    var state = this.parent;
+    state.showWorld();
+    state.encounterOut(callback);
 }
 
 module.exports = BattleSubState;

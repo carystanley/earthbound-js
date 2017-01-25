@@ -111,6 +111,18 @@ game.encounterOut = function (callback) {
     this.ui.matte.transition(0xFF0000, 0, 10, callback);
 };
 
+game.hideWorld = function () {
+    this.player.visible = false;
+    this.enemies.visible = false;
+    this.world.visible = false;
+}
+
+game.showWorld = function () {
+    this.player.visible = true;
+    this.enemies.visible = true;
+    this.world.visible = true;
+}
+
 game.soundEffectPlay = function (id) {
     this.soundEffects[id].play();
 };

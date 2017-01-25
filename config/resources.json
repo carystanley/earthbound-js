@@ -1,12 +1,13 @@
 {
   "map_house": {"type": "map", "path": "maps/house.json",
-    tileset: ["tiles_house"],
-    bgm: "bgm_boymeetsgirl"
+    "tileset": ["tiles_house"],
+    "bgm": "bgm_boymeetsgirl"
   },
 
   "tiles_house": {"type": "image", "path": "images/house_tileset.png"},
 
   "image_dialog": {"type": "image", "path": "images/dialog.png"},
+  "battlebg_1": {"type": "image", "path": "images/battlebg/1.png"},
 
   "font_basic": {"type": "bitmapfont", "path": "fonts/basic.png", "meta": "fonts/basic.xml"},
   "font_mrsaturn": {"type": "bitmapfont", "path": "fonts/mrsaturn.png", "meta": "fonts/mrsaturn.xml"},
@@ -14,5 +15,5 @@
   "sfx_door_open": {"type": "audio", "path": ["audio/effect_door_open.wav"]},
   "bgm_boymeetsgirl": {"type": "audio", "path": ["audio/background_boymeetsgirl.mp3"]},
 
-  "default": {"type": "resources", "resources": ["image_dialog", "font_basic", "sfx_door_open"]}
+  "default": {"type": "resources", "resources": ["image_dialog", "font_basic", "sfx_door_open", "battlebg_1"]}
 }

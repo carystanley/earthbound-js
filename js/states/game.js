@@ -129,14 +129,6 @@ game.showWorld = function () {
     // this.world.visible = true;
 }
 
-game.hideBattle = function () {
-    this.ui.battlebg.hide();
-}
-
-game.showBattle = function () {
-    this.ui.battlebg.show();
-}
-
 game.soundEffectPlay = function (id) {
     this.soundEffects[id].play();
 };

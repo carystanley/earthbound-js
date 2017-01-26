@@ -7,6 +7,7 @@ BattleSubState.prototype.transitionIn = function(callback) {
     var state = this.parent;
     state.encounterIn(function () {
         state.hideWorld();
+        state.showBattle();
         callback();
     });
 }
@@ -21,6 +22,7 @@ BattleSubState.prototype.update = function() {
 BattleSubState.prototype.transitionOut = function(callback) {
     var state = this.parent;
     state.showWorld();
+    state.hideBattle();
     state.encounterOut(callback);
 }
 

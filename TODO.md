@@ -1,9 +1,19 @@
 ## TO DO
 
-   * Loading the map should be separated out, so that we can load a new map without reseting the "state"
+### Clean Up
 
-- [ ] Add Items Config
-- [ ] Add Enemy Config
+* Loading the map should be separated out, so that we can load a new map without reseting the "state"
+* Add "delegate" to Menu state
+* Add Class System
+
+### Development
+
+* CutScene SubState with Interpreter
+* Party
+* Inventory
+* Character Walking AI
+
+
 - [ ] Setup CutScene SubState
 - [ ] Inventory
 - [ ] Menu System

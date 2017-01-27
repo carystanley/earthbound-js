@@ -82,7 +82,11 @@ module.exports = function (grunt) {
                 src: ['<%= project.src %>/app.js'],
                 dest: '<%= project.bundle %>',
                 options: {
-                    transform: [],
+                    transform: [
+                        ['babelify', {
+                            loose: 'all'
+                        }]
+                    ],
                     watch: true,
                     browserifyOptions: {
                         debug: !productionBuild

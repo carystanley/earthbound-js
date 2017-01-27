@@ -1,15 +1,14 @@
-var Event = require('./Event');
+import Event from './Event';
 
-function DialogEvent(game, settings) {
-    Event.call(this, game, settings);
+class DialogEvent extends Event {
+    constructor(game, settings) {
+        super(game, settings);
+    }
+
+    onTouch() {
+        var properties = this.settings.properties;
+        this.game.showDialog(properties.text);
+    }
 }
 
-DialogEvent.prototype = Object.create(Event.prototype);
-DialogEvent.prototype.constructor = DialogEvent;
-
-DialogEvent.prototype.onTouch = function() {
-    var properties = this.settings.properties;
-    this.game.showDialog(properties.text);
-};
-
-module.exports = DialogEvent;
+export default DialogEvent;

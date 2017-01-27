@@ -6,14 +6,7 @@ var SubState = require('../utils/SubState');
 var PlayerGroup = require('../entities/PlayerGroup');
 var Enemy = require('../entities/Enemy');
 var Map = require('../map/Map');
-var substates = {
-    world: require('../substates/World'),
-    transition: require('../substates/Transition'),
-    dialog: require('../substates/Dialog'),
-    battle: require('../substates/Battle'),
-    worldmenu: require('../substates/WorldMenu'),
-    worldgoodsmenu: require('../substates/WorldGoodsMenu')
-};
+var substates = require('../substates');
 var DialogComponent = require('../ui/DialogComponent');
 var uiTypes = require('../ui');
 

@@ -20,4 +20,4 @@ class DialogSubState {
     }
 };
 
-module.exports = DialogSubState;
+export default DialogSubState;

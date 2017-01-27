@@ -1,10 +1,12 @@
 
-var TransitionSubState = function(state) {
-    this.parent = state;
-};
+class TransitionSubState {
+    constructor(state) {
+        this.parent = state;
+    }
 
-TransitionSubState.prototype.enter = function() {
+    enter() {
 
+    }
 }
 
-module.exports = TransitionSubState;
+export default TransitionSubState;

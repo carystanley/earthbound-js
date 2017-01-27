@@ -38,7 +38,7 @@ game.create = function () {
         this.backgroundMusic.play('', 0, 1, true);
     }
     this.soundEffects = {
-        sfx_door_open: game.add.audio('sfx_door_open')
+        sfxDoorOpen: game.add.audio('sfx_door_open')
     };
     this.currentMap = new Map(game, this.mapConfig);
     this.enemies = game.add.group();
@@ -137,7 +137,7 @@ game.soundEffectPlay = function (id) {
 game.transport = function(mapId, locationId) {
     var self = this;
     this.switchSubState('transition');
-    this.soundEffectPlay('sfx_door_open');
+    this.soundEffectPlay('sfxDoorOpen');
     this.fadeOut(function() {
         if (self.mapId === mapId) {
             var locationPos = self.currentMap.getLocation(locationId);

@@ -29,3 +29,21 @@
 - [ ] Dialog Choice System
 - [ ] Stats
 - [ ] X
+
+### stage
+
+* Phaser.Stage
+   * Phaser.World
+      * Phaser.TilemapLayer
+      * Phaser.TilemapLayer
+      * Phaser.Graphics
+      * PlayerGroup
+      * Phaser.Group (Enemy x 2)
+      * Phaser.Group (Spawn x 2)
+      * Phaser.Group (BattleBackgroundLine x 112)
+      * t
+      * t
+      * t
+      * t
+   * Phaser.Graphics ?
+   * Phaser.Image ?

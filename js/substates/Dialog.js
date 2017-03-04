@@ -1,23 +1,22 @@
-class DialogSubState {
-    constructor(state) {
-        this.parent = state;
-    }
 
-    enter() {
-        this.parent.chatDialog.show();
-    }
+var DialogSubState = function(state) {
+    this.parent = state;
+}
 
-    update() {
-        var state = this.parent;
+DialogSubState.prototype.enter = function() {
+    this.parent.chatDialog.show();
+};
 
-        if (state.actionKey.isDown) {
-            state.switchSubState('world');
-        }
-    }
+DialogSubState.prototype.update = function() {
+    var state = this.parent;
 
-    exit() {
-        this.parent.chatDialog.hide();
+    if (state.actionKey.isDown) {
+        state.switchSubState('world');
     }
+};
+
+DialogSubState.prototype.exit = function() {
+    this.parent.chatDialog.hide();
 };
 
 module.exports = DialogSubState;
